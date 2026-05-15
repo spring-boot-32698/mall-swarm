@@ -20,7 +20,7 @@ import cn.dev33.satoken.fun.SaFunction;
 import cn.dev33.satoken.jwt.StpLogicJwtForSimple;
 import cn.dev33.satoken.listener.SaTokenEventCenter;
 import cn.dev33.satoken.session.SaSession;
-import cn.dev33.satoken.session.TokenSign;
+import cn.dev33.satoken.session.SaTerminalInfo;
 import cn.dev33.satoken.stp.SaLoginModel;
 import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpLogic;
@@ -836,8 +836,8 @@ public class StpMemberUtil {
 	 * @param device 设备类型，填 null 代表不限设备类型
 	 * @return 此 loginId 的所有登录 tokenSign
 	 */
-	public static List<TokenSign> getTokenSignListByLoginId(Object loginId, String device) {
-		return stpLogic.getTokenSignListByLoginId(loginId, device);
+	public static List<SaTerminalInfo> getTerminalListByLoginId(Object loginId, String device) {
+		return stpLogic.getTerminalListByLoginId(loginId, device);
 	}
 
 	/**

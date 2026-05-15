@@ -1,6 +1,13 @@
 server:
   port: 8080
 spring:
+  application:
+    name: mall-admin
+  profiles:
+    active: dev
+  cloud:
+    bootstrap:
+      enabled: false
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
@@ -45,7 +52,7 @@ management:
     configprops:
       show-values: always #默认Actuator的配置属性会以****显示，这里开启显示
     info:
-      enabled: true
+      access: read-only
 redis:
   database: mall-swarm
   key:
@@ -65,7 +72,7 @@ aliyun:
     dir:
       prefix: mall/images/ # 上传文件夹路径前缀
 minio:
-  endpoint: http://locahost:9000 #MinIO服务所在地址
+  endpoint: http://localhost:9000 #MinIO服务所在地址
   bucketName: mall #存储桶名称
   accessKey: minioadmin #访问的key
   secretKey: minioadmin #访问的秘钥
@@ -111,3 +118,6 @@ sa-token:
   jwt-secret-key: sa-secret-key123
   # 是否打印banner
   is-print: false
+logstash:
+  host: localhost
+  enableInnerLog: false

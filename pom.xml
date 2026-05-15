@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.2</version>
+        <version>3.5.14</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -33,27 +33,28 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <skipTests>true</skipTests>
         <docker.host>http://192.168.3.101:2375</docker.host>
-        <docker.maven.plugin.version>0.43.3</docker.maven.plugin.version>
+        <docker.maven.plugin.version>0.45.1</docker.maven.plugin.version>
         <java.version>17</java.version>
-        <spring-boot.version>3.2.2</spring-boot.version>
-        <spring-cloud.version>2023.0.1</spring-cloud.version>
-        <spring-cloud-alibaba.version>2023.0.1.0</spring-cloud-alibaba.version>
-        <pagehelper-starter.version>2.1.0</pagehelper-starter.version>
-        <pagehelper.version>6.1.0</pagehelper.version>
-        <druid.version>1.2.9</druid.version>
-        <hutool.version>5.8.16</hutool.version>
+        <spring-boot.version>3.5.14</spring-boot.version>
+        <spring-cloud.version>2025.0.2</spring-cloud.version>
+        <spring-cloud-alibaba.version>2025.0.0.0</spring-cloud-alibaba.version>
+        <pagehelper-starter.version>2.1.1</pagehelper-starter.version>
+        <pagehelper.version>6.1.1</pagehelper.version>
+        <druid.version>1.2.24</druid.version>
+        <hutool.version>5.8.40</hutool.version>
         <mybatis-generator.version>1.4.2</mybatis-generator.version>
-        <mybatis.version>3.5.14</mybatis.version>
-        <mybatis-spring-boot-starter.version>3.0.3</mybatis-spring-boot-starter.version>
-        <mysql-connector.version>8.0.29</mysql-connector.version>
-        <spring-data-commons.version>3.2.2</spring-data-commons.version>
-        <aliyun-oss.version>2.5.0</aliyun-oss.version>
-        <alipay-sdk.version>4.38.61.ALL</alipay-sdk.version>
-        <logstash-logback.version>5.3</logstash-logback.version>
-        <spring-boot-admin.version>3.2.2</spring-boot-admin.version>
-        <minio.version>8.4.5</minio.version>
+        <mybatis.version>3.5.19</mybatis.version>
+        <mybatis-spring-boot-starter.version>3.0.4</mybatis-spring-boot-starter.version>
+        <mysql-connector.version>9.3.0</mysql-connector.version>
+        <spring-data-commons.version>3.5.11</spring-data-commons.version>
+        <aliyun-oss.version>3.18.5</aliyun-oss.version>
+        <alipay-sdk.version>4.40.630.ALL</alipay-sdk.version>
+        <logstash-logback.version>8.0</logstash-logback.version>
+        <spring-boot-admin.version>3.5.6</spring-boot-admin.version>
+        <minio.version>8.6.0</minio.version>
         <knife4j.version>4.5.0</knife4j.version>
-        <sa-token.version>1.37.0</sa-token.version>
+        <springdoc-openapi.version>2.8.17</springdoc-openapi.version>
+        <sa-token.version>1.42.0</sa-token.version>
         <mall-common.version>1.0-SNAPSHOT</mall-common.version>
         <mall-mbg.version>1.0-SNAPSHOT</mall-mbg.version>
     </properties>
@@ -138,7 +139,7 @@
             <!--集成druid连接池-->
             <dependency>
                 <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
+                <artifactId>druid-spring-boot-3-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
             <!--Hutool Java工具包-->
@@ -147,16 +148,29 @@
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
-            <!--Knife4j API文档生产工具-->
+            <!--Knife4j API文档（网关聚合）-->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-gateway-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
             </dependency>
+            <!--Knife4j API文档（排除内置springdoc，手动指定兼容版本）-->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springdoc</groupId>
+                        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!--SpringDoc OpenAPI（兼容Spring Boot 3.5.x）-->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc-openapi.version}</version>
             </dependency>
             <!-- MyBatis 生成器 -->
             <dependency>
@@ -172,8 +186,8 @@
             </dependency>
             <!--Mysql数据库驱动-->
             <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
                 <version>${mysql-connector.version}</version>
             </dependency>
             <!--SpringData工具包-->

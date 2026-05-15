@@ -1,6 +1,13 @@
 server:
   port: 8085
 spring:
+  application:
+    name: mall-portal
+  profiles:
+    active: dev
+  cloud:
+    bootstrap:
+      enabled: false
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
@@ -51,7 +58,7 @@ management:
     configprops:
       show-values: always #默认Actuator的配置属性会以****显示，这里开启显示
     info:
-      enabled: true
+      access: read-only
 redis:
   database: mall-swarm
   key:

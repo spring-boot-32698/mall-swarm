@@ -3,7 +3,6 @@ package com.macro.mall.config;
 import cn.dev33.satoken.context.SaHolder;
 import cn.dev33.satoken.exception.NotLoginException;
 import cn.dev33.satoken.exception.NotPermissionException;
-import cn.dev33.satoken.reactor.context.SaReactorSyncHolder;
 import cn.dev33.satoken.reactor.filter.SaReactorFilter;
 import cn.dev33.satoken.router.SaHttpMethod;
 import cn.dev33.satoken.router.SaRouter;
@@ -17,11 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
-import org.springframework.web.server.ServerWebExchange;
 
 import java.util.*;
 
@@ -85,11 +81,10 @@ public class SaTokenConfig {
      */
     private CommonResult handleException(Throwable e) {
         //设置错误返回格式为JSON
-        ServerWebExchange exchange = SaReactorSyncHolder.getContext();
-        HttpHeaders headers = exchange.getResponse().getHeaders();
-        headers.set("Content-Type", "application/json; charset=utf-8");
-        headers.set("Access-Control-Allow-Origin", "*");
-        headers.set("Cache-Control","no-cache");
+        SaHolder.getResponse()
+                .setHeader("Content-Type", "application/json; charset=utf-8")
+                .setHeader("Access-Control-Allow-Origin", "*")
+                .setHeader("Cache-Control", "no-cache");
         CommonResult result = null;
         if(e instanceof NotLoginException){
             result = CommonResult.unauthorized(null);

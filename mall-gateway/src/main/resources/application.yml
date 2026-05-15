@@ -1,10 +1,16 @@
 server:
   port: 8201
 spring:
+  application:
+    name: mall-gateway
+  profiles:
+    active: dev
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
   cloud:
+    bootstrap:
+      enabled: false
     gateway:
       discovery:
         locator:
@@ -84,7 +90,7 @@ management:
     configprops:
       show-values: always #默认Actuator的配置属性会以****显示，这里开启显示
     info:
-      enabled: true
+      access: read-only
 knife4j:
   gateway:
     enabled: true
@@ -118,4 +124,3 @@ sa-token:
   token-prefix: Bearer
   # 是否打印banner
   is-print: false
-

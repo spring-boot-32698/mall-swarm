@@ -1,6 +1,13 @@
 server:
   port: 8081
 spring:
+  application:
+    name: mall-search
+  profiles:
+    active: dev
+  cloud:
+    bootstrap:
+      enabled: false
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
@@ -32,6 +39,9 @@ management:
     web:
       exposure:
         include: '*' #暴露Actuator的监控端点
+  health:
+    elasticsearch:
+      enabled: false
   endpoint:
     health:
       show-details: always #显示健康的详细信息
@@ -40,7 +50,7 @@ management:
     configprops:
       show-values: always #默认Actuator的配置属性会以****显示，这里开启显示
     info:
-      enabled: true
+      access: read-only
 springdoc:
   swagger-ui:
     # 修改Swagger UI路径

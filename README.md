@@ -14,13 +14,13 @@
 
 > 1. **快速体验项目**：[在线访问地址](https://cloud.macrozheng.com/admin/index.html) 。
 > 2. **全套学习教程**：[《mall-swarm微服务学习教程》](https://cloud.macrozheng.com) 。
-> 3. **视频教程（2024最新版）**：[《mall-swarm视频教程》](https://cloud.macrozheng.com/video/) 。
+> 3. **视频教程**：[《mall-swarm视频教程》](https://cloud.macrozheng.com/video/) 。
 > 4. **Spring Cloud全套教程**：[《SpringCloud学习教程》](https://github.com/macrozheng/springcloud-learning) 。
-> 5. **分支说明**：`master`分支基于Spring Cloud 2023+Spring Boot 3.2，`dev-v2`分支基于Spring Cloud 2021+Spring Boot 2.7。
+> 5. **分支说明**：`master`分支基于Spring Cloud 2025+Spring Boot 3.5，`dev-v2`分支基于Spring Cloud 2021+Spring Boot 2.7。
 
 ## 项目简介
 
-`mall-swarm`是一套微服务商城系统，采用了 Spring Cloud 2023 & Alibaba、Spring Boot 3.2、Sa-Token、MyBatis、Elasticsearch、Docker、Kubernetes等核心技术，同时提供了基于Vue的管理后台方便快速搭建系统。`mall-swarm`在电商业务的基础集成了注册中心、配置中心、监控中心、网关等系统功能。文档齐全，附带全套Spring Cloud教程。
+`mall-swarm`是一套微服务商城系统，采用了 Spring Cloud 2025 & Alibaba、Spring Boot 3.5、Sa-Token、MyBatis、Elasticsearch、Docker、Kubernetes等核心技术，同时提供了基于Vue的管理后台方便快速搭建系统。`mall-swarm`在电商业务的基础集成了注册中心、配置中心、监控中心、网关等系统功能。文档齐全，附带全套Spring Cloud教程。
 
 ## 项目演示
 
@@ -173,4 +173,4 @@ mall
 
 [Apache License 2.0](https://github.com/macrozheng/mall-swarm/blob/master/LICENSE)
 
-Copyright (c) 2018-2025 macrozheng
+Copyright (c) 2018-2026 macrozheng
