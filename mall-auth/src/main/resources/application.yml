@@ -5,9 +5,6 @@ spring:
     name: mall-auth
   profiles:
     active: dev
-  cloud:
-    bootstrap:
-      enabled: false
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher

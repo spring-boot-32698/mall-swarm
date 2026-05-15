@@ -9,8 +9,6 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
   cloud:
-    bootstrap:
-      enabled: false
     gateway:
       discovery:
         locator:
