@@ -7,22 +7,22 @@ import java.math.BigDecimal;
 public class UmsMemberRuleSetting implements Serializable {
     private Long id;
 
-    @Schema(title = "连续签到天数")
+    @Schema(title = "Consecutive check-in days")
     private Integer continueSignDay;
 
-    @Schema(title = "连续签到赠送数量")
+    @Schema(title = "Amount awarded for consecutive check-in")
     private Integer continueSignPoint;
 
-    @Schema(title = "每消费多少元获取1个点")
+    @Schema(title = "Earn 1 point for every this many yuan spent")
     private BigDecimal consumePerPoint;
 
-    @Schema(title = "最低获取点数的订单金额")
+    @Schema(title = "Minimum order amount to earn points")
     private BigDecimal lowOrderAmount;
 
-    @Schema(title = "每笔订单最高获取点数")
+    @Schema(title = "Maximum points per order")
     private Integer maxPointPerOrder;
 
-    @Schema(title = "类型：0->积分规则；1->成长值规则")
+    @Schema(title = "Type:0->Points rules;1->Growth value rules")
     private Integer type;
 
     private static final long serialVersionUID = 1L;

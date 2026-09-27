@@ -37,7 +37,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * UmsAdminService实现类
+ * UmsAdminService Implementation class
  * Created by macro on 2018/4/26.
  */
 @Service
@@ -71,14 +71,14 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         BeanUtils.copyProperties(umsAdminParam, umsAdmin);
         umsAdmin.setCreateTime(new Date());
         umsAdmin.setStatus(1);
-        //查询是否有相同用户名的用户
+        //Query whether a user with the same username exists
         UmsAdminExample example = new UmsAdminExample();
         example.createCriteria().andUsernameEqualTo(umsAdmin.getUsername());
         List<UmsAdmin> umsAdminList = adminMapper.selectByExample(example);
         if (umsAdminList.size() > 0) {
             return null;
         }
-        //将密码进行加密操作
+        //Encrypt the password
         String encodePassword = BCrypt.hashpw(umsAdmin.getPassword());
         umsAdmin.setPassword(encodePassword);
         adminMapper.insert(umsAdmin);
@@ -88,19 +88,19 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Override
     public SaTokenInfo login(String username, String password) {
         if(StrUtil.isEmpty(username)||StrUtil.isEmpty(password)){
-            Asserts.fail("用户名或密码不能为空！");
+            Asserts.fail("Username or password cannot be empty!");
         }
         UmsAdmin admin = getAdminByUsername(username);
         if(admin==null){
-            Asserts.fail("找不到该用户！");
+            Asserts.fail("User not found!");
         }
         if (!BCrypt.checkpw(password, admin.getPassword())) {
-            Asserts.fail("密码不正确！");
+            Asserts.fail("Incorrect password!");
         }
         if(admin.getStatus()!=1){
-            Asserts.fail("该账号已被禁用！");
+            Asserts.fail("This account has been disabled!");
         }
-        // 登录校验成功后，一行代码实现登录
+        // After login verification succeeds, log in with one line of code
         StpUtil.login(admin.getId());
         UserDto userDto = new UserDto();
         userDto.setId(admin.getId());
@@ -109,9 +109,9 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         List<UmsResource> resourceList = getResourceList(admin.getId());
         List<String> permissionList = resourceList.stream().map(item -> item.getId() + ":" + item.getName()).toList();
         userDto.setPermissionList(permissionList);
-        // 将用户信息存储到Session中
+        // Store user information in the Session
         StpUtil.getSession().set(AuthConstant.STP_ADMIN_INFO,userDto);
-        // 获取当前登录用户Token信息
+        // Get the current logged-in user’s Token info
         SaTokenInfo saTokenInfo = StpUtil.getTokenInfo();
 //        updateLoginTimeByUsername(username);
         insertLoginLog(admin);
@@ -119,7 +119,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     }
 
     /**
-     * 添加登录记录
+     * Add login record
      */
     private void insertLoginLog(UmsAdmin admin) {
         if(admin==null) return;
@@ -133,7 +133,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     }
 
     /**
-     * 根据用户名修改登录时间
+     * Modify login time by username
      */
     private void updateLoginTimeByUsername(String username) {
         UmsAdmin record = new UmsAdmin();
@@ -165,10 +165,10 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         admin.setId(id);
         UmsAdmin rawAdmin = adminMapper.selectByPrimaryKey(id);
         if(rawAdmin.getPassword().equals(admin.getPassword())){
-            //与原加密密码相同的不需要修改
+            //Passwords identical to the original encrypted password need no modification
             admin.setPassword(null);
         }else{
-            //与原加密密码不同的需要加密修改
+            //Passwords that differ from the original encrypted password need to be encrypted and modified
             if(StrUtil.isEmpty(admin.getPassword())){
                 admin.setPassword(null);
             }else{
@@ -190,11 +190,11 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Override
     public int updateRole(Long adminId, List<Long> roleIds) {
         int count = roleIds == null ? 0 : roleIds.size();
-        //先删除原来的关系
+        //Delete the original relations first
         UmsAdminRoleRelationExample adminRoleRelationExample = new UmsAdminRoleRelationExample();
         adminRoleRelationExample.createCriteria().andAdminIdEqualTo(adminId);
         adminRoleRelationMapper.deleteByExample(adminRoleRelationExample);
-        //建立新关系
+        //Establish new relations
         if (!CollectionUtils.isEmpty(roleIds)) {
             List<UmsAdminRoleRelation> list = new ArrayList<>();
             for (Long roleId : roleIds) {
@@ -253,10 +253,10 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     }
     @Override
     public void logout() {
-        //先清空缓存
+        //Clear the cache first
         UserDto userDto = (UserDto) StpUtil.getSession().get(AuthConstant.STP_ADMIN_INFO);
         adminCacheService.delAdmin(userDto.getId());
-        //再调用sa-token的登出方法
+        //Then call the sa-token logout method
         StpUtil.logout();
     }
 }

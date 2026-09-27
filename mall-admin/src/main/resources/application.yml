@@ -13,25 +13,25 @@ spring:
     username: root
     password: root
     druid:
-      initial-size: 5 #连接池初始化大小
-      min-idle: 10 #最小空闲连接数
-      max-active: 20 #最大连接数
+      initial-size: 5 #Connection pool initial size
+      min-idle: 10 #Minimum idle connections
+      max-active: 20 #Maximum connections
       web-stat-filter:
-        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
-      stat-view-servlet: #访问监控网页的登录用户名和密码
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #Do not count these request data
+      stat-view-servlet: #Login username and password for accessing the monitoring web page
         login-username: druid
         login-password: druid
   data:
     redis:
-      host: localhost # Redis服务器地址
-      database: 0 # Redis数据库索引（默认为0）
-      port: 6379 # Redis服务器连接端口
-      password:  # Redis服务器连接密码（默认为空）
-      timeout: 3000ms # 连接超时时间（毫秒）
+      host: localhost # Redis Server address
+      database: 0 # Redis Database index (default 0)
+      port: 6379 # Redis Server connection port
+      password:  # Redis Server connection password (empty by default)
+      timeout: 3000ms # Connection timeout (milliseconds)
   servlet:
     multipart:
-      enabled: true #开启文件上传
-      max-file-size: 10MB #限制文件上传大小为10M
+      enabled: true #Enable file upload
+      max-file-size: 10MB #Limit the file upload size to 10M
 mybatis:
   mapper-locations:
     - classpath:dao/*.xml
@@ -40,14 +40,14 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*' #暴露Actuator的监控端点
+        include: '*' #Expose Actuator monitoring endpoints
   endpoint:
     health:
-      show-details: always #显示健康的详细信息
+      show-details: always #Show detailed health information
     env:
-      show-values: always #默认Actuator的环境变量会以****显示，这里开启显示
+      show-values: always # Actuator environment variables are masked (****) by default; show real values here
     configprops:
-      show-values: always #默认Actuator的配置属性会以****显示，这里开启显示
+      show-values: always # Actuator configuration properties are masked (****) by default; show real values here
     info:
       access: read-only
 redis:
@@ -55,65 +55,65 @@ redis:
   key:
     admin: 'ums:admin'
   expire:
-    common: 86400 # 24小时
+    common: 86400 # 24 hours
 aliyun:
   oss:
-    endpoint: oss-cn-shenzhen.aliyuncs.com # oss对外服务的访问域名
-    accessKeyId: test # 访问身份验证中用到用户标识
-    accessKeySecret: test # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
-    bucketName: macro-oss # oss的存储空间
+    endpoint: oss-cn-shenzhen.aliyuncs.com # oss Access domain name for external services
+    accessKeyId: test # User identifier used in access identity authentication
+    accessKeySecret: test # Secret key used by the user to encrypt the signature string and by OSS to verify it
+    bucketName: macro-oss # oss storage space
     policy:
-      expire: 300 # 签名有效期(S)
-    maxSize: 10 # 上传文件大小(M)
-    callback: http://39.98.190.128:8080/aliyun/oss/callback # 文件上传成功后的回调地址
+      expire: 300 # Signature validity period(S)
+    maxSize: 10 # Upload file size(M)
+    callback: http://39.98.190.128:8080/aliyun/oss/callback # Callback URL after file upload succeeds
     dir:
-      prefix: mall/images/ # 上传文件夹路径前缀
+      prefix: mall/images/ # Upload folder path prefix
 minio:
-  endpoint: http://localhost:9000 #MinIO服务所在地址
-  bucketName: mall #存储桶名称
-  accessKey: minioadmin #访问的key
-  secretKey: minioadmin #访问的秘钥
+  endpoint: http://localhost:9000 #MinIO Service address
+  bucketName: mall #Bucket name
+  accessKey: minioadmin #Access key
+  secretKey: minioadmin #Access secret key
 springdoc:
   swagger-ui:
-    # 修改Swagger UI路径
+    # Modify Swagger UI path
     path: /swagger-ui.html
-    # 开启Swagger UI界面
+    # Enable Swagger UI
     enabled: true
-    # 用于配置tag和operation的展开方式，这里配置为都不展开
+    # Configures how tags and operations are expanded; here neither is expanded
     doc-expansion: 'none'
   api-docs:
-    # 修改api-docs路径
+    # Modify api-docs path
     path: /v3/api-docs
-    # 开启api-docs
+    # Enable api-docs
     enabled: true
   group-configs:
     - group: 'default'
       packages-to-scan: com.macro.mall.controller
   default-flat-param-object: false
 sa-token:
-  # token名称 (同时也是cookie名称)
+  # token Name (Also the cookie name)
   token-name: Authorization
-  # token有效期，单位秒，-1代表永不过期
+  # token Validity period in seconds, -1 means never expires
   timeout: 604800
-  # token临时有效期 (指定时间内无操作就视为token过期)，单位秒
+  # token Temporary validity period (Token is considered expired if no operation within the specified time), in seconds
   active-timeout: -1
-  # 是否允许同一账号并发登录 (为false时新登录挤掉旧登录)
+  # Whether the same account may log in concurrently (When false, a new login kicks out the old login)
   is-concurrent: true
-  # 在多人登录同一账号时，是否共用一个token (为false时每次登录新建一个token)
+  # Whether multiple logins on the same account share one token (When false, a new one is created for each login token)
   is-share: false
-  # token风格
+  # token Style
   token-style: uuid
-  # 是否输出操作日志
+  # Whether to output operation logs
   is-log: false
-  # 是否从cookie中读取token
+  # Whether to read from cookie token
   is-read-cookie: false
-  # 是否从head中读取token
+  # Whether to read from header token
   is-read-header: true
-  # token前缀
+  # token Prefix
   token-prefix: Bearer
-  # jwt秘钥
+  # jwt Secret key
   jwt-secret-key: sa-secret-key123
-  # 是否打印banner
+  # Whether to print banner
   is-print: false
 logstash:
   host: localhost

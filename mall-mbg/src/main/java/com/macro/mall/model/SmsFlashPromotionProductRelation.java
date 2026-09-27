@@ -5,26 +5,26 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class SmsFlashPromotionProductRelation implements Serializable {
-    @Schema(title = "编号")
+    @Schema(title = "No.")
     private Long id;
 
     private Long flashPromotionId;
 
-    @Schema(title = "编号")
+    @Schema(title = "No.")
     private Long flashPromotionSessionId;
 
     private Long productId;
 
-    @Schema(title = "限时购价格")
+    @Schema(title = "Flash sale price")
     private BigDecimal flashPromotionPrice;
 
-    @Schema(title = "限时购数量")
+    @Schema(title = "Flash sale quantity")
     private Integer flashPromotionCount;
 
-    @Schema(title = "每人限购数量")
+    @Schema(title = "Purchase limit per person")
     private Integer flashPromotionLimit;
 
-    @Schema(title = "排序")
+    @Schema(title = "Sort")
     private Integer sort;
 
     private static final long serialVersionUID = 1L;

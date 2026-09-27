@@ -9,7 +9,7 @@ public class SmsHomeAdvertise implements Serializable {
 
     private String name;
 
-    @Schema(title = "轮播位置：0->PC首页轮播；1->app首页轮播")
+    @Schema(title = "Carousel position:0->PC Home carousel;1->app Home carousel")
     private Integer type;
 
     private String pic;
@@ -18,22 +18,22 @@ public class SmsHomeAdvertise implements Serializable {
 
     private Date endTime;
 
-    @Schema(title = "上下线状态：0->下线；1->上线")
+    @Schema(title = "Online/offline status:0->Offline;1->Online")
     private Integer status;
 
-    @Schema(title = "点击数")
+    @Schema(title = "Click count")
     private Integer clickCount;
 
-    @Schema(title = "下单数")
+    @Schema(title = "Orders placed")
     private Integer orderCount;
 
-    @Schema(title = "链接地址")
+    @Schema(title = "Link URL")
     private String url;
 
-    @Schema(title = "备注")
+    @Schema(title = "Remarks")
     private String note;
 
-    @Schema(title = "排序")
+    @Schema(title = "Sort")
     private Integer sort;
 
     private static final long serialVersionUID = 1L;

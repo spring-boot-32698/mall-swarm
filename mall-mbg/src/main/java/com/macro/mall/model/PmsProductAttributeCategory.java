@@ -8,10 +8,10 @@ public class PmsProductAttributeCategory implements Serializable {
 
     private String name;
 
-    @Schema(title = "属性数量")
+    @Schema(title = "Attribute count")
     private Integer attributeCount;
 
-    @Schema(title = "参数数量")
+    @Schema(title = "Parameter count")
     private Integer paramCount;
 
     private static final long serialVersionUID = 1L;

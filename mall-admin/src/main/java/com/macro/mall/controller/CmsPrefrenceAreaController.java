@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * 商品优选管理Controller
+ * Preferred product management Controller
  * Created by macro on 2018/6/1.
  */
 @Controller
-@Tag(name = "CmsPrefrenceAreaController", description = "商品优选管理")
+@Tag(name = "CmsPrefrenceAreaController", description = "Preferred product management")
 @RequestMapping("/prefrenceArea")
 public class CmsPrefrenceAreaController {
     @Autowired
     private CmsPrefrenceAreaService prefrenceAreaService;
 
-    @Operation(summary = "获取所有商品优选")
+    @Operation(summary = "Get all preferred products")
     @RequestMapping(value = "/listAll", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<CmsPrefrenceArea>> listAll() {

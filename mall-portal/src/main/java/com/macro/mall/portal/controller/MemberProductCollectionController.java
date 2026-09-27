@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 会员收藏管理Controller
+ * Member favorites management Controller
  * Created by macro on 2018/8/2.
  */
 @Controller
-@Tag(name = "MemberCollectionController", description = "会员收藏管理")
+@Tag(name = "MemberCollectionController", description = "Member favorites management")
 @RequestMapping("/member/productCollection")
 public class MemberProductCollectionController {
     @Autowired
     private MemberCollectionService memberCollectionService;
 
-    @Operation(summary = "添加商品收藏")
+    @Operation(summary = "Add product favorite")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult add(@RequestBody MemberProductCollection productCollection) {
@@ -37,7 +37,7 @@ public class MemberProductCollectionController {
         }
     }
 
-    @Operation(summary = "删除收藏商品")
+    @Operation(summary = "Delete favorited product")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(Long productId) {
@@ -49,7 +49,7 @@ public class MemberProductCollectionController {
         }
     }
 
-    @Operation(summary = "显示收藏列表")
+    @Operation(summary = "Show favorites list")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<MemberProductCollection>> list(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
@@ -58,7 +58,7 @@ public class MemberProductCollectionController {
         return CommonResult.success(CommonPage.restPage(page));
     }
 
-    @Operation(summary = "显示收藏商品详情")
+    @Operation(summary = "Show favorited product details")
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<MemberProductCollection> detail(@RequestParam Long productId) {
@@ -66,7 +66,7 @@ public class MemberProductCollectionController {
         return CommonResult.success(memberProductCollection);
     }
 
-    @Operation(summary = "清空收藏列表")
+    @Operation(summary = "Clear favorites list")
     @RequestMapping(value = "/clear", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult clear() {

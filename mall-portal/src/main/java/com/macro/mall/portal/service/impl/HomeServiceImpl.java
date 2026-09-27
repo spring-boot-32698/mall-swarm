@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 首页内容管理Service实现类
+ * Home content management Service implementation class
  * Created by macro on 2019/1/28.
  */
 @Service
@@ -40,24 +40,24 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public HomeContentResult content() {
         HomeContentResult result = new HomeContentResult();
-        //获取首页广告
+        //Get home page ads
         result.setAdvertiseList(getHomeAdvertiseList());
-        //获取推荐品牌
+        //Get recommended brands
         result.setBrandList(homeDao.getRecommendBrandList(0,6));
-        //获取秒杀信息
+        //Get flash sale info
         result.setHomeFlashPromotion(getHomeFlashPromotion());
-        //获取新品推荐
+        //Get new arrival recommendations
         result.setNewProductList(homeDao.getNewProductList(0,4));
-        //获取人气推荐
+        //Get popular recommendations
         result.setHotProductList(homeDao.getHotProductList(0,4));
-        //获取推荐专题
+        //Get recommended topics
         result.setSubjectList(homeDao.getRecommendSubjectList(0,4));
         return result;
     }
 
     @Override
     public List<PmsProduct> recommendProductList(Integer pageSize, Integer pageNum) {
-        // TODO: 2019/1/29 暂时默认推荐所有商品
+        // TODO: 2019/1/29 Temporarily recommend all products by default
         PageHelper.startPage(pageNum,pageSize);
         PmsProductExample example = new PmsProductExample();
         example.createCriteria()
@@ -102,22 +102,22 @@ public class HomeServiceImpl implements HomeService {
 
     private HomeFlashPromotion getHomeFlashPromotion() {
         HomeFlashPromotion homeFlashPromotion = new HomeFlashPromotion();
-        //获取当前秒杀活动
+        //Get the current flash sale activity
         Date now = new Date();
         SmsFlashPromotion flashPromotion = getFlashPromotion(now);
         if (flashPromotion != null) {
-            //获取当前秒杀场次
+            //Get the current flash sale session
             SmsFlashPromotionSession flashPromotionSession = getFlashPromotionSession(now);
             if (flashPromotionSession != null) {
                 homeFlashPromotion.setStartTime(flashPromotionSession.getStartTime());
                 homeFlashPromotion.setEndTime(flashPromotionSession.getEndTime());
-                //获取下一个秒杀场次
+                //Get next flash sale session
                 SmsFlashPromotionSession nextSession = getNextFlashPromotionSession(homeFlashPromotion.getStartTime());
                 if(nextSession!=null){
                     homeFlashPromotion.setNextStartTime(nextSession.getStartTime());
                     homeFlashPromotion.setNextEndTime(nextSession.getEndTime());
                 }
-                //获取秒杀商品
+                //Get flash sale products
                 List<FlashPromotionProduct> flashProductList = homeDao.getFlashProductList(flashPromotion.getId(), flashPromotionSession.getId());
                 homeFlashPromotion.setProductList(flashProductList);
             }
@@ -125,7 +125,7 @@ public class HomeServiceImpl implements HomeService {
         return homeFlashPromotion;
     }
 
-    //获取下一个场次信息
+    //Get next session info
     private SmsFlashPromotionSession getNextFlashPromotionSession(Date date) {
         SmsFlashPromotionSessionExample sessionExample = new SmsFlashPromotionSessionExample();
         sessionExample.createCriteria()
@@ -145,7 +145,7 @@ public class HomeServiceImpl implements HomeService {
         return advertiseMapper.selectByExample(example);
     }
 
-    //根据时间获取秒杀活动
+    //Get flash sale activities by time
     private SmsFlashPromotion getFlashPromotion(Date date) {
         Date currDate = DateUtil.getDate(date);
         SmsFlashPromotionExample example = new SmsFlashPromotionExample();
@@ -160,7 +160,7 @@ public class HomeServiceImpl implements HomeService {
         return null;
     }
 
-    //根据时间获取秒杀场次
+    //Get flash sale sessions by time
     private SmsFlashPromotionSession getFlashPromotionSession(Date date) {
         Date currTime = DateUtil.getTime(date);
         SmsFlashPromotionSessionExample sessionExample = new SmsFlashPromotionSessionExample();

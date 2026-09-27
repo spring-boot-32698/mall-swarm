@@ -11,31 +11,31 @@ public class UmsMemberLevel implements Serializable {
 
     private Integer growthPoint;
 
-    @Schema(title = "是否为默认等级：0->不是；1->是")
+    @Schema(title = "Whether default level:0->No;1->Yes")
     private Integer defaultStatus;
 
-    @Schema(title = "免运费标准")
+    @Schema(title = "Free shipping threshold")
     private BigDecimal freeFreightPoint;
 
-    @Schema(title = "每次评价获取的成长值")
+    @Schema(title = "Growth value earned per review")
     private Integer commentGrowthPoint;
 
-    @Schema(title = "是否有免邮特权")
+    @Schema(title = "Whether it has free shipping privilege")
     private Integer priviledgeFreeFreight;
 
-    @Schema(title = "是否有签到特权")
+    @Schema(title = "Whether it has check-in privilege")
     private Integer priviledgeSignIn;
 
-    @Schema(title = "是否有评论获奖励特权")
+    @Schema(title = "Whether it has review reward privilege")
     private Integer priviledgeComment;
 
-    @Schema(title = "是否有专享活动特权")
+    @Schema(title = "Whether it has exclusive activity privilege")
     private Integer priviledgePromotion;
 
-    @Schema(title = "是否有会员价格特权")
+    @Schema(title = "Whether it has member price privilege")
     private Integer priviledgeMemberPrice;
 
-    @Schema(title = "是否有生日特权")
+    @Schema(title = "Whether it has birthday privilege")
     private Integer priviledgeBirthday;
 
     private String note;

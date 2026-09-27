@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * 收货地址管理Controller
+ * Shipping address management Controller
  * Created by macro on 2018/10/18.
  */
 @Controller
-@Tag(name = "OmsCompanyAddressController", description = "收货地址管理")
+@Tag(name = "OmsCompanyAddressController", description = "Shipping address management")
 @RequestMapping("/companyAddress")
 public class OmsCompanyAddressController {
     @Autowired
     private OmsCompanyAddressService companyAddressService;
 
-    @Operation(summary = "获取所有收货地址")
+    @Operation(summary = "Get all shipping addresses")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<OmsCompanyAddress>> list() {

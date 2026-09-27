@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @auther macrozheng
- * @description 前台会员服务远程调用Service
+ * @description Storefront member service remote call Service
  * @date 2024/1/30
  * @github https://github.com/macrozheng
  */

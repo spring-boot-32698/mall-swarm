@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Feign调用mall-portal接口示例
+ * Feign Example of calling mall-portal API
  * Created by macro on 2019/10/18.
  */
-@Tag(name = "FeignPortalController", description = "Feign调用mall-portal接口示例")
+@Tag(name = "FeignPortalController", description = "Feign Example of calling mall-portal API")
 @RestController
 @RequestMapping("/feign/portal")
 public class FeignPortalController {
@@ -20,13 +20,13 @@ public class FeignPortalController {
     @Autowired
     private FeignPortalService portalService;
 
-    @Operation(summary = "前台会员列表登录")
+    @Operation(summary = "Storefront member list login")
     @PostMapping("/login")
     public CommonResult login(@RequestParam String username, @RequestParam String password) {
         return portalService.login(username,password);
     }
 
-    @Operation(summary = "获取购物车列表")
+    @Operation(summary = "Get shopping cart list")
     @GetMapping("/cartList")
     public CommonResult cartList() {
         return portalService.list();

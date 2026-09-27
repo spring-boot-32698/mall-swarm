@@ -7,19 +7,19 @@ import java.util.Date;
 public class UmsResource implements Serializable {
     private Long id;
 
-    @Schema(title = "创建时间")
+    @Schema(title = "Creation time")
     private Date createTime;
 
-    @Schema(title = "资源名称")
+    @Schema(title = "Resource name")
     private String name;
 
-    @Schema(title = "资源URL")
+    @Schema(title = "Resource URL")
     private String url;
 
-    @Schema(title = "描述")
+    @Schema(title = "Description")
     private String description;
 
-    @Schema(title = "资源分类ID")
+    @Schema(title = "Resource category ID")
     private Long categoryId;
 
     private static final long serialVersionUID = 1L;

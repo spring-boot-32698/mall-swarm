@@ -23,7 +23,7 @@ import java.util.*;
 
 /**
  * @auther macrozheng
- * @description Sa-Token相关配置
+ * @description Sa-Token Related configuration
  * @date 2023/11/28
  * @github https://github.com/macrozheng
  */
@@ -34,31 +34,31 @@ public class SaTokenConfig {
     private RedisTemplate<String, Object> redisTemplate;
 
     /**
-     * 注册Sa-Token全局过滤器
+     * Register the Sa-Token global filter
      */
     @Bean
     public SaReactorFilter getSaReactorFilter(IgnoreUrlsConfig ignoreUrlsConfig) {
         return new SaReactorFilter()
-                // 拦截地址
+                // Intercepted URLs
                 .addInclude("/**")
-                // 配置白名单路径
+                // Configure whitelist paths
                 .setExcludeList(ignoreUrlsConfig.getUrls())
-                // 鉴权方法：每次访问进入
+                // Authentication method: on every access entering
                 .setAuth(obj -> {
-                    // 对于OPTIONS预检请求直接放行
+                    // Let OPTIONS preflight requests pass directly
                     SaRouter.match(SaHttpMethod.OPTIONS).stop();
-                    // 登录认证：商城前台会员认证
+                    // Login authentication: storefront mall member authentication
                     SaRouter.match("/mall-portal/**", r -> StpMemberUtil.checkLogin()).stop();
-                    // 登录认证：管理后台用户认证
+                    // Login authentication: admin backend user authentication
                     SaRouter.match("/mall-admin/**", r -> StpUtil.checkLogin());
-                    // 权限认证：管理后台用户权限校验
-                    // 获取Redis中缓存的各个接口路径所需权限规则
+                    // Permission authentication: admin backend user permission checks
+                    // Get the permission rules required by each API path cached in Redis
                     Map<Object, Object> pathResourceMap = redisTemplate.opsForHash().entries(AuthConstant.PATH_RESOURCE_MAP);
-                    // 获取到访问当前接口所需权限（一个路径对应多个资源时，拥有任意一个资源都可以访问该路径）
+                    // Get the permissions required to access the current API (when a path maps to multiple resources, holding any one of them grants access)
                     List<String> needPermissionList = new ArrayList<>();
-                    // 获取当前请求路径
+                    // Get the current request path
                     String requestPath = SaHolder.getRequest().getRequestPath();
-                    // 创建路径匹配器
+                    // Create path matcher
                     PathMatcher pathMatcher = new AntPathMatcher();
                     Set<Map.Entry<Object, Object>> entrySet = pathResourceMap.entrySet();
                     for (Map.Entry<Object, Object> entry : entrySet) {
@@ -67,20 +67,20 @@ public class SaTokenConfig {
                             needPermissionList.add((String) entry.getValue());
                         }
                     }
-                    // 接口需要权限时鉴权
+                    // Authenticate when the API requires permission
                     if(CollUtil.isNotEmpty(needPermissionList)){
                         SaRouter.match(requestPath, r -> StpUtil.checkPermissionOr(Convert.toStrArray(needPermissionList)));
                     }
                 })
-                // setAuth方法异常处理
+                // setAuth Method exception handling
                 .setError(this::handleException);
     }
 
     /**
-     * 自定义异常处理
+     * Custom exception handling
      */
     private CommonResult handleException(Throwable e) {
-        //设置错误返回格式为JSON
+        //Set the error return format to JSON
         SaHolder.getResponse()
                 .setHeader("Content-Type", "application/json; charset=utf-8")
                 .setHeader("Access-Control-Allow-Origin", "*")

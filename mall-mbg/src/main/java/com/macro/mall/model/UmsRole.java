@@ -7,19 +7,19 @@ import java.util.Date;
 public class UmsRole implements Serializable {
     private Long id;
 
-    @Schema(title = "名称")
+    @Schema(title = "Name")
     private String name;
 
-    @Schema(title = "描述")
+    @Schema(title = "Description")
     private String description;
 
-    @Schema(title = "后台用户数量")
+    @Schema(title = "Admin user count")
     private Integer adminCount;
 
-    @Schema(title = "创建时间")
+    @Schema(title = "Creation time")
     private Date createTime;
 
-    @Schema(title = "启用状态：0->禁用；1->启用")
+    @Schema(title = "Enabled status:0->Disabled;1->Enable")
     private Integer status;
 
     private Integer sort;

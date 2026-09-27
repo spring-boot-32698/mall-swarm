@@ -8,26 +8,26 @@ import lombok.Setter;
 import java.util.List;
 
 /**
- * 前台商品详情
+ * Storefront product details
  * Created by macro on 2020/4/6.
  */
 @Getter
 @Setter
 public class PmsPortalProductDetail{
-    @Schema(title = "商品信息")
+    @Schema(title = "Product information")
     private PmsProduct product;
-    @Schema(title = "商品品牌")
+    @Schema(title = "Product brand")
     private PmsBrand brand;
-    @Schema(title = "商品属性与参数")
+    @Schema(title = "Product attributes and parameters")
     private List<PmsProductAttribute> productAttributeList;
-    @Schema(title = "手动录入的商品属性与参数值")
+    @Schema(title = "Manually entered product attributes and parameter values")
     private List<PmsProductAttributeValue> productAttributeValueList;
-    @Schema(title = "商品的sku库存信息")
+    @Schema(title = "Product SKU stock information")
     private List<PmsSkuStock> skuStockList;
-    @Schema(title = "商品阶梯价格设置")
+    @Schema(title = "Product tiered price settings")
     private List<PmsProductLadder> productLadderList;
-    @Schema(title = "商品满减价格设置")
+    @Schema(title = "Product full reduction price settings")
     private List<PmsProductFullReduction> productFullReductionList;
-    @Schema(title = "商品可用优惠券")
+    @Schema(title = "Coupons available for product")
     private List<SmsCoupon> couponList;
 }

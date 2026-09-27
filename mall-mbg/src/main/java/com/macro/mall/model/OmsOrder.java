@@ -6,134 +6,134 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class OmsOrder implements Serializable {
-    @Schema(title = "订单id")
+    @Schema(title = "Order id")
     private Long id;
 
     private Long memberId;
 
     private Long couponId;
 
-    @Schema(title = "订单编号")
+    @Schema(title = "Order number")
     private String orderSn;
 
-    @Schema(title = "提交时间")
+    @Schema(title = "Submission time")
     private Date createTime;
 
-    @Schema(title = "用户帐号")
+    @Schema(title = "User account")
     private String memberUsername;
 
-    @Schema(title = "订单总金额")
+    @Schema(title = "Total order amount")
     private BigDecimal totalAmount;
 
-    @Schema(title = "应付金额（实际支付金额）")
+    @Schema(title = "Amount payable (actual paid amount)")
     private BigDecimal payAmount;
 
-    @Schema(title = "运费金额")
+    @Schema(title = "Shipping fee amount")
     private BigDecimal freightAmount;
 
-    @Schema(title = "促销优化金额（促销价、满减、阶梯价）")
+    @Schema(title = "Promotion optimization amount (promotion price, full reduction, tiered price)")
     private BigDecimal promotionAmount;
 
-    @Schema(title = "积分抵扣金额")
+    @Schema(title = "Points deduction amount")
     private BigDecimal integrationAmount;
 
-    @Schema(title = "优惠券抵扣金额")
+    @Schema(title = "Coupon deduction amount")
     private BigDecimal couponAmount;
 
-    @Schema(title = "管理员后台调整订单使用的折扣金额")
+    @Schema(title = "Discount amount applied by admin when adjusting an order")
     private BigDecimal discountAmount;
 
-    @Schema(title = "支付方式：0->未支付；1->支付宝；2->微信")
+    @Schema(title = "Payment method:0->Unpaid;1->Alipay;2->WeChat")
     private Integer payType;
 
-    @Schema(title = "订单来源：0->PC订单；1->app订单")
+    @Schema(title = "Order source:0->PC Order;1->app Order")
     private Integer sourceType;
 
-    @Schema(title = "订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单")
+    @Schema(title = "Order status:0->Pending payment;1->Pending shipment;2->Shipped;3->Completed;4->Closed;5->Invalid order")
     private Integer status;
 
-    @Schema(title = "订单类型：0->正常订单；1->秒杀订单")
+    @Schema(title = "Order type:0->Normal order;1->Flash sale order")
     private Integer orderType;
 
-    @Schema(title = "物流公司(配送方式)")
+    @Schema(title = "Logistics company(Delivery method)")
     private String deliveryCompany;
 
-    @Schema(title = "物流单号")
+    @Schema(title = "Tracking number")
     private String deliverySn;
 
-    @Schema(title = "自动确认时间（天）")
+    @Schema(title = "Auto-confirm time (days)")
     private Integer autoConfirmDay;
 
-    @Schema(title = "可以获得的积分")
+    @Schema(title = "Points obtainable")
     private Integer integration;
 
-    @Schema(title = "可以活动的成长值")
+    @Schema(title = "Growth value obtainable from activity")
     private Integer growth;
 
-    @Schema(title = "活动信息")
+    @Schema(title = "Activity information")
     private String promotionInfo;
 
-    @Schema(title = "发票类型：0->不开发票；1->电子发票；2->纸质发票")
+    @Schema(title = "Invoice type:0->No invoice;1->Electronic invoice;2->Paper invoice")
     private Integer billType;
 
-    @Schema(title = "发票抬头")
+    @Schema(title = "Invoice title")
     private String billHeader;
 
-    @Schema(title = "发票内容")
+    @Schema(title = "Invoice content")
     private String billContent;
 
-    @Schema(title = "收票人电话")
+    @Schema(title = "Invoice recipient phone")
     private String billReceiverPhone;
 
-    @Schema(title = "收票人邮箱")
+    @Schema(title = "Invoice recipient email")
     private String billReceiverEmail;
 
-    @Schema(title = "收货人姓名")
+    @Schema(title = "Recipient name")
     private String receiverName;
 
-    @Schema(title = "收货人电话")
+    @Schema(title = "Recipient phone")
     private String receiverPhone;
 
-    @Schema(title = "收货人邮编")
+    @Schema(title = "Recipient postal code")
     private String receiverPostCode;
 
-    @Schema(title = "省份/直辖市")
+    @Schema(title = "Province/Municipality")
     private String receiverProvince;
 
-    @Schema(title = "城市")
+    @Schema(title = "City")
     private String receiverCity;
 
-    @Schema(title = "区")
+    @Schema(title = "District")
     private String receiverRegion;
 
-    @Schema(title = "详细地址")
+    @Schema(title = "Detailed address")
     private String receiverDetailAddress;
 
-    @Schema(title = "订单备注")
+    @Schema(title = "Order remarks")
     private String note;
 
-    @Schema(title = "确认收货状态：0->未确认；1->已确认")
+    @Schema(title = "Receipt confirmation status:0->Not confirmed;1->Confirmed")
     private Integer confirmStatus;
 
-    @Schema(title = "删除状态：0->未删除；1->已删除")
+    @Schema(title = "Deletion status:0->Not deleted;1->Deleted")
     private Integer deleteStatus;
 
-    @Schema(title = "下单时使用的积分")
+    @Schema(title = "Points used when placing the order")
     private Integer useIntegration;
 
-    @Schema(title = "支付时间")
+    @Schema(title = "Payment time")
     private Date paymentTime;
 
-    @Schema(title = "发货时间")
+    @Schema(title = "Shipping time")
     private Date deliveryTime;
 
-    @Schema(title = "确认收货时间")
+    @Schema(title = "Receipt confirmation time")
     private Date receiveTime;
 
-    @Schema(title = "评价时间")
+    @Schema(title = "Review time")
     private Date commentTime;
 
-    @Schema(title = "修改时间")
+    @Schema(title = "Modification time")
     private Date modifyTime;
 
     private static final long serialVersionUID = 1L;

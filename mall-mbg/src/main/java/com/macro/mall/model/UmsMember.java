@@ -9,55 +9,55 @@ public class UmsMember implements Serializable {
 
     private Long memberLevelId;
 
-    @Schema(title = "用户名")
+    @Schema(title = "Username")
     private String username;
 
-    @Schema(title = "密码")
+    @Schema(title = "Password")
     private String password;
 
-    @Schema(title = "昵称")
+    @Schema(title = "Nickname")
     private String nickname;
 
-    @Schema(title = "手机号码")
+    @Schema(title = "Phone number")
     private String phone;
 
-    @Schema(title = "帐号启用状态:0->禁用；1->启用")
+    @Schema(title = "Account enabled status:0->Disabled;1->Enable")
     private Integer status;
 
-    @Schema(title = "注册时间")
+    @Schema(title = "Registration time")
     private Date createTime;
 
-    @Schema(title = "头像")
+    @Schema(title = "Avatar")
     private String icon;
 
-    @Schema(title = "性别：0->未知；1->男；2->女")
+    @Schema(title = "Gender:0->Unknown;1->Male;2->Female")
     private Integer gender;
 
-    @Schema(title = "生日")
+    @Schema(title = "Birthday")
     private Date birthday;
 
-    @Schema(title = "所做城市")
+    @Schema(title = "City")
     private String city;
 
-    @Schema(title = "职业")
+    @Schema(title = "Occupation")
     private String job;
 
-    @Schema(title = "个性签名")
+    @Schema(title = "Signature")
     private String personalizedSignature;
 
-    @Schema(title = "用户来源")
+    @Schema(title = "User source")
     private Integer sourceType;
 
-    @Schema(title = "积分")
+    @Schema(title = "Points")
     private Integer integration;
 
-    @Schema(title = "成长值")
+    @Schema(title = "Growth value")
     private Integer growth;
 
-    @Schema(title = "剩余抽奖次数")
+    @Schema(title = "Remaining draws")
     private Integer luckeyCount;
 
-    @Schema(title = "历史积分数量")
+    @Schema(title = "Historical points quantity")
     private Integer historyIntegration;
 
     private static final long serialVersionUID = 1L;

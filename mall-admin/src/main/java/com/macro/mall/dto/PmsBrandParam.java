@@ -9,31 +9,31 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 
 /**
- * 品牌传递参数
+ * Brand parameters passed
  * Created by macro on 2018/4/26.
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class PmsBrandParam {
     @NotEmpty
-    @Schema(title = "品牌名称",required = true)
+    @Schema(title = "Brand name",required = true)
     private String name;
-    @Schema(title = "品牌首字母")
+    @Schema(title = "Brand initial letter")
     private String firstLetter;
     @Min(value = 0)
-    @Schema(title = "排序字段")
+    @Schema(title = "Sort field")
     private Integer sort;
-    @FlagValidator(value = {"0","1"}, message = "厂家状态不正确")
-    @Schema(title = "是否为厂家制造商")
+    @FlagValidator(value = {"0","1"}, message = "Manufacturer status is incorrect")
+    @Schema(title = "Whether it is a manufacturer")
     private Integer factoryStatus;
-    @FlagValidator(value = {"0","1"}, message = "显示状态不正确")
-    @Schema(title = "是否进行显示")
+    @FlagValidator(value = {"0","1"}, message = "Display status is incorrect")
+    @Schema(title = "Whether to show")
     private Integer showStatus;
     @NotEmpty
-    @Schema(title = "品牌logo",required = true)
+    @Schema(title = "Brand logo",required = true)
     private String logo;
-    @Schema(title = "品牌大图")
+    @Schema(title = "Brand large image")
     private String bigPic;
-    @Schema(title = "品牌故事")
+    @Schema(title = "Brand story")
     private String brandStory;
 }

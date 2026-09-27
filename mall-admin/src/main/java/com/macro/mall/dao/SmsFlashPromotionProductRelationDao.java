@@ -6,12 +6,12 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * 自定义限时购商品关系管理Dao
+ * Custom flash sale product relation management Dao
  * Created by macro on 2018/11/16.
  */
 public interface SmsFlashPromotionProductRelationDao {
     /**
-     * 获取限时购及相关商品信息
+     * Get flash sale and related product info
      */
     List<SmsFlashPromotionProduct> getList(@Param("flashPromotionId") Long flashPromotionId, @Param("flashPromotionSessionId") Long flashPromotionSessionId);
 }

@@ -11,25 +11,25 @@ public class UmsAdmin implements Serializable {
 
     private String password;
 
-    @Schema(title = "头像")
+    @Schema(title = "Avatar")
     private String icon;
 
-    @Schema(title = "邮箱")
+    @Schema(title = "Email")
     private String email;
 
-    @Schema(title = "昵称")
+    @Schema(title = "Nickname")
     private String nickName;
 
-    @Schema(title = "备注信息")
+    @Schema(title = "Remarks")
     private String note;
 
-    @Schema(title = "创建时间")
+    @Schema(title = "Creation time")
     private Date createTime;
 
-    @Schema(title = "最后登录时间")
+    @Schema(title = "Last login time")
     private Date loginTime;
 
-    @Schema(title = "帐号启用状态：0->禁用；1->启用")
+    @Schema(title = "Account enabled status:0->Disabled;1->Enable")
     private Integer status;
 
     private static final long serialVersionUID = 1L;

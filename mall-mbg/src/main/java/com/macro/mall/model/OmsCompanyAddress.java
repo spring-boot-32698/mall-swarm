@@ -6,31 +6,31 @@ import java.io.Serializable;
 public class OmsCompanyAddress implements Serializable {
     private Long id;
 
-    @Schema(title = "地址名称")
+    @Schema(title = "Address name")
     private String addressName;
 
-    @Schema(title = "默认发货地址：0->否；1->是")
+    @Schema(title = "Default shipping address:0->No;1->Yes")
     private Integer sendStatus;
 
-    @Schema(title = "是否默认收货地址：0->否；1->是")
+    @Schema(title = "Whether default shipping address:0->No;1->Yes")
     private Integer receiveStatus;
 
-    @Schema(title = "收发货人姓名")
+    @Schema(title = "Sender/recipient name")
     private String name;
 
-    @Schema(title = "收货人电话")
+    @Schema(title = "Recipient phone")
     private String phone;
 
-    @Schema(title = "省/直辖市")
+    @Schema(title = "Province/Municipality")
     private String province;
 
-    @Schema(title = "市")
+    @Schema(title = "City")
     private String city;
 
-    @Schema(title = "区")
+    @Schema(title = "District")
     private String region;
 
-    @Schema(title = "详细地址")
+    @Schema(title = "Detailed address")
     private String detailAddress;
 
     private static final long serialVersionUID = 1L;

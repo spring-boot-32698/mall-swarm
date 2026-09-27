@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 首页品牌推荐管理Controller
+ * Home brand recommendation management Controller
  * Created by macro on 2020/5/15.
  */
 @Controller
-@Tag(name = "PortalBrandController", description = "前台品牌管理")
+@Tag(name = "PortalBrandController", description = "Storefront brand management")
 @RequestMapping("/brand")
 public class PortalBrandController {
 
     @Autowired
     private PortalBrandService homeBrandService;
 
-    @Operation(summary = "分页获取推荐品牌")
+    @Operation(summary = "Get recommended brands by page")
     @RequestMapping(value = "/recommendList", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<PmsBrand>> recommendList(@RequestParam(value = "pageSize", defaultValue = "6") Integer pageSize,
@@ -35,7 +35,7 @@ public class PortalBrandController {
         return CommonResult.success(brandList);
     }
 
-    @Operation(summary = "获取品牌详情")
+    @Operation(summary = "Get brand details")
     @RequestMapping(value = "/detail/{brandId}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<PmsBrand> detail(@PathVariable Long brandId) {
@@ -43,7 +43,7 @@ public class PortalBrandController {
         return CommonResult.success(brand);
     }
 
-    @Operation(summary = "分页获取品牌相关商品")
+    @Operation(summary = "Get brand-related products by page")
     @RequestMapping(value = "/productList", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<PmsProduct>> productList(@RequestParam Long brandId,

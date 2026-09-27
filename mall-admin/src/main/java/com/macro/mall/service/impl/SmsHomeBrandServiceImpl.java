@@ -12,7 +12,7 @@ import org.springframework.util.StringUtils;
 import java.util.List;
 
 /**
- * 首页品牌管理Service实现类
+ * Home brand management Service implementation class
  * Created by macro on 2018/11/6.
  */
 @Service

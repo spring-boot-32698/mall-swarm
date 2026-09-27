@@ -3,11 +3,11 @@ spring:
     name: mall-monitor
   profiles:
     active: dev
-  security: # 配置登录用户名和密码
+  security: # Configure login username and password
     user:
       name: macro
       password: 123456
-  boot:  # 不显示admin-server的监控信息
+  boot:  # Do not show admin-server monitoring info
     admin:
       discovery:
         ignored-services: ${spring.application.name}

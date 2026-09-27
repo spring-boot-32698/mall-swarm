@@ -7,28 +7,28 @@ import java.util.Date;
 public class UmsMenu implements Serializable {
     private Long id;
 
-    @Schema(title = "父级ID")
+    @Schema(title = "Parent ID")
     private Long parentId;
 
-    @Schema(title = "创建时间")
+    @Schema(title = "Creation time")
     private Date createTime;
 
-    @Schema(title = "菜单名称")
+    @Schema(title = "Menu name")
     private String title;
 
-    @Schema(title = "菜单级数")
+    @Schema(title = "Menu level")
     private Integer level;
 
-    @Schema(title = "菜单排序")
+    @Schema(title = "Menu sort")
     private Integer sort;
 
-    @Schema(title = "前端名称")
+    @Schema(title = "Frontend name")
     private String name;
 
-    @Schema(title = "前端图标")
+    @Schema(title = "Frontend icon")
     private String icon;
 
-    @Schema(title = "前端隐藏")
+    @Schema(title = "Frontend hidden")
     private Integer hidden;
 
     private static final long serialVersionUID = 1L;

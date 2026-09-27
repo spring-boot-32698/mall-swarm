@@ -10,28 +10,28 @@ public class UmsMemberStatisticsInfo implements Serializable {
 
     private Long memberId;
 
-    @Schema(title = "累计消费金额")
+    @Schema(title = "Cumulative spending amount")
     private BigDecimal consumeAmount;
 
-    @Schema(title = "订单数量")
+    @Schema(title = "Order quantity")
     private Integer orderCount;
 
-    @Schema(title = "优惠券数量")
+    @Schema(title = "Coupon quantity")
     private Integer couponCount;
 
-    @Schema(title = "评价数")
+    @Schema(title = "Review count")
     private Integer commentCount;
 
-    @Schema(title = "退货数量")
+    @Schema(title = "Return quantity")
     private Integer returnOrderCount;
 
-    @Schema(title = "登录次数")
+    @Schema(title = "Login count")
     private Integer loginCount;
 
-    @Schema(title = "关注数量")
+    @Schema(title = "Follow count")
     private Integer attendCount;
 
-    @Schema(title = "粉丝数量")
+    @Schema(title = "Follower count")
     private Integer fansCount;
 
     private Integer collectProductCount;
@@ -44,7 +44,7 @@ public class UmsMemberStatisticsInfo implements Serializable {
 
     private Integer inviteFriendCount;
 
-    @Schema(title = "最后一次下订单时间")
+    @Schema(title = "Time of last order")
     private Date recentOrderTime;
 
     private static final long serialVersionUID = 1L;

@@ -8,30 +8,30 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * 商品属性Service
+ * Product attributes Service
  * Created by macro on 2018/4/26.
  */
 public interface PmsProductAttributeService {
     /**
-     * 根据分类分页获取商品属性
-     * @param cid 分类id
-     * @param type 0->属性；2->参数
+     * Get product attributes by category with paging
+     * @param cid Category id
+     * @param type 0->Attributes;2->Parameters
      */
     List<PmsProductAttribute> getList(Long cid, Integer type, Integer pageSize, Integer pageNum);
 
     /**
-     * 添加商品属性
+     * Add product attribute
      */
     @Transactional
     int create(PmsProductAttributeParam pmsProductAttributeParam);
 
     /**
-     * 修改商品属性
+     * Modify product attribute
      */
     int update(Long id, PmsProductAttributeParam productAttributeParam);
 
     /**
-     * 获取单个商品属性信息
+     * Get single product attribute info
      */
     PmsProductAttribute getItem(Long id);
 

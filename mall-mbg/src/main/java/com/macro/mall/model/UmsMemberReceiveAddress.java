@@ -8,27 +8,27 @@ public class UmsMemberReceiveAddress implements Serializable {
 
     private Long memberId;
 
-    @Schema(title = "收货人名称")
+    @Schema(title = "Recipient name")
     private String name;
 
     private String phoneNumber;
 
-    @Schema(title = "是否为默认")
+    @Schema(title = "Whether default")
     private Integer defaultStatus;
 
-    @Schema(title = "邮政编码")
+    @Schema(title = "Postal code")
     private String postCode;
 
-    @Schema(title = "省份/直辖市")
+    @Schema(title = "Province/Municipality")
     private String province;
 
-    @Schema(title = "城市")
+    @Schema(title = "City")
     private String city;
 
-    @Schema(title = "区")
+    @Schema(title = "District")
     private String region;
 
-    @Schema(title = "详细地址(街道)")
+    @Schema(title = "Detailed address(Street)")
     private String detailAddress;
 
     private static final long serialVersionUID = 1L;

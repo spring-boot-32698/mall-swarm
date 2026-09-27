@@ -19,11 +19,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 会员登录注册管理Controller
+ * Member login and registration management Controller
  * Created by macro on 2018/8/3.
  */
 @Controller
-@Tag(name = "UmsMemberController", description = "会员登录注册管理")
+@Tag(name = "UmsMemberController", description = "Member login and registration management")
 @RequestMapping("/sso")
 public class UmsMemberController {
     @Autowired
@@ -31,7 +31,7 @@ public class UmsMemberController {
     @Value("${sa-token.token-prefix}")
     private String tokenHead;
 
-    @Operation(summary = "会员注册")
+    @Operation(summary = "Member registration")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult register(@RequestParam String username,
@@ -39,17 +39,17 @@ public class UmsMemberController {
                                  @RequestParam String telephone,
                                  @RequestParam String authCode) {
         memberService.register(username, password, telephone, authCode);
-        return CommonResult.success(null,"注册成功");
+        return CommonResult.success(null,"Registration successful");
     }
 
-    @Operation(summary = "会员登录")
+    @Operation(summary = "Member login")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult login(@RequestParam String username,
                               @RequestParam String password) {
         SaTokenInfo saTokenInfo  = memberService.login(username, password);
         if (saTokenInfo  == null) {
-            return CommonResult.validateFailed("用户名或密码错误");
+            return CommonResult.validateFailed("Incorrect username or password");
         }
         Map<String, String> tokenMap = new HashMap<>();
         tokenMap.put("token", saTokenInfo.getTokenValue() );
@@ -57,7 +57,7 @@ public class UmsMemberController {
         return CommonResult.success(tokenMap);
     }
 
-    @Operation(summary = "获取会员信息")
+    @Operation(summary = "Get member information")
     @RequestMapping(value = "/info", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult info() {
@@ -65,7 +65,7 @@ public class UmsMemberController {
         return CommonResult.success(member);
     }
 
-    @Operation(summary = "登出功能")
+    @Operation(summary = "Logout feature")
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult logout() {
@@ -73,21 +73,21 @@ public class UmsMemberController {
         return CommonResult.success(null);
     }
 
-    @Operation(summary = "获取验证码")
+    @Operation(summary = "Get verification code")
     @RequestMapping(value = "/getAuthCode", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult getAuthCode(@RequestParam String telephone) {
         String authCode = memberService.generateAuthCode(telephone);
-        return CommonResult.success(authCode,"获取验证码成功");
+        return CommonResult.success(authCode,"Verification code obtained successfully");
     }
 
-    @Operation(summary = "修改密码")
+    @Operation(summary = "Change password")
     @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updatePassword(@RequestParam String telephone,
                                  @RequestParam String password,
                                  @RequestParam String authCode) {
         memberService.updatePassword(telephone,password,authCode);
-        return CommonResult.success(null,"密码修改成功");
+        return CommonResult.success(null,"Password changed successfully");
     }
 }

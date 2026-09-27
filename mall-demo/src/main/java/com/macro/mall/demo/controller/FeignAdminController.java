@@ -14,22 +14,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Feign调用mall-admin接口示例
+ * Feign Example of calling mall-admin API
  */
-@Tag(name = "FeignAdminController", description = "Feign调用mall-admin接口示例")
+@Tag(name = "FeignAdminController", description = "Feign Example of calling mall-admin API")
 @RestController
 @RequestMapping("/feign/admin")
 public class FeignAdminController {
     @Autowired
     private FeignAdminService adminService;
 
-    @Operation(summary = "后台管理员登录")
+    @Operation(summary = "Admin login")
     @PostMapping("/login")
     public CommonResult login(@RequestBody UmsAdminLoginParam loginParam) {
         return adminService.login(loginParam);
     }
 
-    @Operation(summary = "获取商品列表")
+    @Operation(summary = "Get product list")
     @GetMapping("/getBrandList")
     public CommonResult getBrandList(){
         return adminService.getList();

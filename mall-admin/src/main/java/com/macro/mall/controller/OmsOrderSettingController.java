@@ -11,17 +11,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * 订单设置Controller
+ * Order settings Controller
  * Created by macro on 2018/10/16.
  */
 @Controller
-@Tag(name = "OmsOrderSettingController", description = "订单设置管理")
+@Tag(name = "OmsOrderSettingController", description = "Order settings management")
 @RequestMapping("/orderSetting")
 public class OmsOrderSettingController {
     @Autowired
     private OmsOrderSettingService orderSettingService;
 
-    @Operation(summary = "获取指定订单设置")
+    @Operation(summary = "Get specified order settings")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<OmsOrderSetting> getItem(@PathVariable Long id) {
@@ -29,7 +29,7 @@ public class OmsOrderSettingController {
         return CommonResult.success(orderSetting);
     }
 
-    @Operation(summary = "修改指定订单设置")
+    @Operation(summary = "Modify specified order settings")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long id, @RequestBody OmsOrderSetting orderSetting) {

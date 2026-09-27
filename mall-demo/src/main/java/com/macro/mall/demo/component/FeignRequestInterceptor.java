@@ -9,7 +9,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import java.util.Enumeration;
 
 /**
- * 用于Feign传递请求头的拦截器
+ * Interceptor used by Feign to pass request headers
  * Created by macro on 2019/10/18.
  */
 public class FeignRequestInterceptor implements RequestInterceptor {
@@ -20,11 +20,11 @@ public class FeignRequestInterceptor implements RequestInterceptor {
         if (attributes != null) {
             HttpServletRequest request = attributes.getRequest();
             Enumeration<String> headerNames = request.getHeaderNames();
-            //在调用需要认证请求的内部接口时，需要获取原认证头并设置到requestTemplate中去
+            //When calling internal APIs that require authentication, obtain the original auth header and set it on requestTemplate
             if (headerNames != null) {
                 while (headerNames.hasMoreElements()) {
                     String name = headerNames.nextElement();
-                    //传递content-length头会导致java.io.IOException: Incomplete output stream问题
+                    //Passing the content-length header causes java.io.IOException: Incomplete output stream
                     if ("content-length".equalsIgnoreCase(name)) {
                         continue;
                     }

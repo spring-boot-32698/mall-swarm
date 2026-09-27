@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpServletRequest;
 
 /**
- * Oss相关操作接口
+ * Oss Related operation APIs
  * Created by macro on 2018/4/26.
  */
 @Controller
-@Tag(name = "OssController", description = "Oss管理")
+@Tag(name = "OssController", description = "Oss Manage")
 @RequestMapping("/aliyun/oss")
 public class OssController {
     @Autowired
     private OssServiceImpl ossService;
 
-    @Operation(summary = "oss上传签名生成")
+    @Operation(summary = "oss Upload signature generation")
     @RequestMapping(value = "/policy", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<OssPolicyResult> policy() {
@@ -32,7 +32,7 @@ public class OssController {
         return CommonResult.success(result);
     }
 
-    @Operation(summary = "oss上传成功回调")
+    @Operation(summary = "oss Upload success callback")
     @RequestMapping(value = "callback", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<OssCallbackResult> callback(HttpServletRequest request) {

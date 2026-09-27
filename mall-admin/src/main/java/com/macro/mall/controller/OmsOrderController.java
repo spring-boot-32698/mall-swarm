@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 订单管理Controller
+ * Order management Controller
  * Created by macro on 2018/10/11.
  */
 @Controller
-@Tag(name = "OmsOrderController", description = "订单管理")
+@Tag(name = "OmsOrderController", description = "Order management")
 @RequestMapping("/order")
 public class OmsOrderController {
     @Autowired
     private OmsOrderService orderService;
 
-    @Operation(summary = "查询订单")
+    @Operation(summary = "Query orders")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<OmsOrder>> list(OmsOrderQueryParam queryParam,
@@ -35,7 +35,7 @@ public class OmsOrderController {
         return CommonResult.success(CommonPage.restPage(orderList));
     }
 
-    @Operation(summary = "批量发货")
+    @Operation(summary = "Batch shipping")
     @RequestMapping(value = "/update/delivery", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delivery(@RequestBody List<OmsOrderDeliveryParam> deliveryParamList) {
@@ -46,7 +46,7 @@ public class OmsOrderController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "批量关闭订单")
+    @Operation(summary = "Batch close orders")
     @RequestMapping(value = "/update/close", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult close(@RequestParam("ids") List<Long> ids, @RequestParam String note) {
@@ -57,7 +57,7 @@ public class OmsOrderController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "批量删除订单")
+    @Operation(summary = "Batch delete orders")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(@RequestParam("ids") List<Long> ids) {
@@ -68,7 +68,7 @@ public class OmsOrderController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "获取订单详情:订单信息、商品信息、操作记录")
+    @Operation(summary = "Get order details: order info, product info, operation records")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<OmsOrderDetail> detail(@PathVariable Long id) {
@@ -76,7 +76,7 @@ public class OmsOrderController {
         return CommonResult.success(orderDetailResult);
     }
 
-    @Operation(summary = "修改收货人信息")
+    @Operation(summary = "Modify recipient information")
     @RequestMapping(value = "/update/receiverInfo", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updateReceiverInfo(@RequestBody OmsReceiverInfoParam receiverInfoParam) {
@@ -87,7 +87,7 @@ public class OmsOrderController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "修改订单费用信息")
+    @Operation(summary = "Modify order fee information")
     @RequestMapping(value = "/update/moneyInfo", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updateReceiverInfo(@RequestBody OmsMoneyInfoParam moneyInfoParam) {
@@ -98,7 +98,7 @@ public class OmsOrderController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "备注订单")
+    @Operation(summary = "Order remarks")
     @RequestMapping(value = "/update/note", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updateNote(@RequestParam("id") Long id,

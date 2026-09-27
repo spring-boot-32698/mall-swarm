@@ -10,66 +10,66 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 前台订单管理Service
+ * Storefront order management Service
  * Created by macro on 2018/8/30.
  */
 public interface OmsPortalOrderService {
     /**
-     * 根据用户购物车信息生成确认单信息
+     * Generate confirmation order info from the user’s cart info
      */
     ConfirmOrderResult generateConfirmOrder(List<Long> cartIds);
 
     /**
-     * 根据提交信息生成订单
+     * Generate order from submitted info
      */
     @Transactional
     Map<String, Object> generateOrder(OrderParam orderParam);
 
     /**
-     * 支付成功后的回调
+     * Callback after successful payment
      */
     @Transactional
     Integer paySuccess(Long orderId, Integer payType);
 
     /**
-     * 自动取消超时订单
+     * Auto-cancel timed-out orders
      */
     @Transactional
     Integer cancelTimeOutOrder();
 
     /**
-     * 取消单个超时订单
+     * Cancel a single timed-out order
      */
     @Transactional
     void cancelOrder(Long orderId);
 
     /**
-     * 发送延迟消息取消订单
+     * Send delayed message to cancel order
      */
     void sendDelayMessageCancelOrder(Long orderId);
 
     /**
-     * 确认收货
+     * Confirm receipt
      */
     void confirmReceiveOrder(Long orderId);
 
     /**
-     * 分页获取用户订单
+     * Get user orders with paging
      */
     CommonPage<OmsOrderDetail> list(Integer status, Integer pageNum, Integer pageSize);
 
     /**
-     * 根据订单ID获取订单详情
+     * Get order details by order ID
      */
     OmsOrderDetail detail(Long orderId);
 
     /**
-     * 用户根据订单ID删除订单
+     * User deletes order by order ID
      */
     void deleteOrder(Long orderId);
 
     /**
-     * 根据orderSn来实现的支付成功逻辑
+     * Payment success logic implemented based on orderSn
      */
     @Transactional
     void paySuccessByOrderSn(String orderSn, Integer payType);

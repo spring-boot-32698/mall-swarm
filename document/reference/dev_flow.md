@@ -1,375 +1,375 @@
 # mall
 
-## 技术选型
+## Technology stack
 
-### 后端技术
+### Backend technologies
 
-技术 | 名称 
+Technology | Name 
 ----|----
-Spring Boot | 容器+MVC框架
-Spring Security | 认证和授权框架
-MyBatis | ORM框架  
-MyBatisGenerator | 数据层代码生成  
-PageHelper | MyBatis物理分页插件  
-Swagger-UI | 文档生产工具
-Hibernator-Validator | 验证框架
-Elasticsearch | 搜索引擎
-RabbitMq | 消息队列
-Redis | 分布式缓存
-MongoDb | NoSql数据库
-Docker | 应用容器引擎
-Druid | 数据库连接池
+Spring Boot | Container + MVC framework
+Spring Security | Authentication and authorization framework
+MyBatis | ORM Framework  
+MyBatisGenerator | Data layer code generation  
+PageHelper | MyBatis Physical pagination plugin  
+Swagger-UI | Documentation generation tool
+Hibernator-Validator | Validation framework
+Elasticsearch | Search engine
+RabbitMq | Message queue
+Redis | Distributed cache
+MongoDb | NoSql Database
+Docker | Application container engine
+Druid | Database connection pool
 
-### 前端技术
+### Frontend technologies
 
-技术 | 名称 
+Technology | Name 
 ----|----
-Vue | 前端框架
-Vue-router | 路由框架
-Vuex | 全局状态管理框架
-Element | 前端UI框架
-Axios | 前端HTTP框架
-Js-cookie | cookie管理工具
+Vue | Frontend framework
+Vue-router | Routing framework
+Vuex | Global state management framework
+Element | Frontend UI framework
+Axios | Frontend HTTP framework
+Js-cookie | cookie Management tools
 
-### 框架搭建
+### Framework setup
 
-功能 | 完成 
+Feature | Complete 
 ----|----
-集成MyBatis | ✔
-集成MyBatisGenerator | ✔
-集成SpringSecurity | ✔
-集成Swagger-UI | ✔
-集成Hibernator-Validator | ✔
-集成日志功能 | ✔
-集成监控功能 | ✔
-crud操作demo | ✔
-合理规划包结构 | ✔
-SpringAOP通用日志处理 | ✔
-SpringAOP通用验证失败结果返回 | ✔
-CommonResult对通用返回结果进行封装 | ✔
-SpringSecurity登录改为Restful形式 | ✔
-JWT登录、注册、获取token | ✔
-JTA事务处理 | ✔
-集成单元测试 | ✔
-OSS上传功能 | ✔
-Elasticsearch搜索功能 | ✔
-HTTPS支持 | ✔
-Redis数字型ID生成 | ✔
-SpringTask定时任务支持 | ✔
-docker容器化部署 | ✔
-配置区分生产和测试环境 | ✔
-ELK日志收集功能 | ✔
-RabbitMq异步通信 | ✔
-RestTemplate服务间调用 | ✔
-SpringSecurity权限管理功能 | ✔
-集成SpringCloud |
+Integration MyBatis | ✔
+Integration MyBatisGenerator | ✔
+Integration SpringSecurity | ✔
+Integration Swagger-UI | ✔
+Integration Hibernator-Validator | ✔
+Integrate logging | ✔
+Integrate monitoring | ✔
+crud Actions demo | ✔
+Plan the package structure sensibly | ✔
+SpringAOP Common log handling | ✔
+SpringAOP Common validation failure result response | ✔
+CommonResult Wrap the common response result | ✔
+SpringSecurity Login changed to a RESTful style | ✔
+JWT Login, registration, get token | ✔
+JTA Transaction handling | ✔
+Integrate unit testing | ✔
+OSS Upload feature | ✔
+Elasticsearch Search feature | ✔
+HTTPS Supports | ✔
+Redis Numeric ID generation | ✔
+SpringTask Scheduled task support | ✔
+docker Containerized deployment | ✔
+Configuration distinguishes production and test environments | ✔
+ELK Log collection feature | ✔
+RabbitMq Asynchronous communication | ✔
+RestTemplate Inter-service calls | ✔
+SpringSecurity Permission management features | ✔
+Integration SpringCloud |
 
-### 使用工具
+### Tools used
 
-工具 | 下载地址 
+Tools | Download URL 
 ----|----
-开发工具idea | https://www.jetbrains.com/idea/download
-redis客户端连接工具 | https://redisdesktop.com/download
-mongo客户端连接工具 | https://robomongo.org/download
-本地host管理 | https://oldj.github.io/SwitchHosts/
-Linux远程连接工具 | http://www.netsarang.com/download/software.html
-数据库连接工具 | http://www.formysql.com/xiazai.html
-数据库设计工具 | http://powerdesigner.de/
-原型设计工具 | https://www.axure.com/
-思维导图设计工具 | http://www.edrawsoft.cn/mindmaster
-gif录制工具 | https://www.screentogif.com/
+Development tools idea | https://www.jetbrains.com/idea/download
+redis Client connection tool | https://redisdesktop.com/download
+mongo Client connection tool | https://robomongo.org/download
+Local host management | https://oldj.github.io/SwitchHosts/
+Linux Remote connection tool | http://www.netsarang.com/download/software.html
+Database connection tool | http://www.formysql.com/xiazai.html
+Database design tool | http://powerdesigner.de/
+Prototyping tool | https://www.axure.com/
+Mind-map design tool | http://www.edrawsoft.cn/mindmaster
+gif Recording tool | https://www.screentogif.com/
 
-### 后台功能
+### Admin features
 
-#### 后台登录功能 ✔
+#### Admin login feature ✔
 
-- 后台用户注册功能
-- 后台用户登录后获取token
-- 刷新token功能
+- Admin user registration feature
+- Obtained after admin user login token
+- Refresh token feature
 
-#### 商品管理 ✔
+#### Product management ✔
 
-> **商品分类管理**
+> **Product category management**
 
-- 按父分类编号分页查看分类列表
-- 添加、编辑、删除分类
-- 转移分类商品
+- View the category list with paging by parent category ID
+- Add, edit, delete categories
+- Transfer category products
 
-> **商品品牌管理**
+> **Product brand management**
 
-- 按品牌名称搜索分页查看品牌列表
-- 添加、编辑、删除品牌
-- 查看当前品牌的所有产品
+- Search by brand name and view the brand list with paging
+- Add, edit, delete brands
+- View all products of the current brand
 
-> **商品属性分类管理**
+> **Product attribute category management**
 
-- 添加商品属性分类（名称）
-- 分页查询全部商品属性分类
-- 删除单个商品属性分类
-- 修改单个属性分类名称
-- 查询单个属性分类信息
+- Add product attribute category (name)
+- Query all product attribute categories with paging
+- Delete a single product attribute category
+- Modify the name of a single attribute category
+- Query information of a single attribute category
 
-> **商品属性管理**
+> **Product attribute management**
 
-- 根据分类查询属性列表或参数列表（分页，支持类型）
-- 添加商品属性
-- 查询单个商品属性
-- 编辑商品属性
-- 批量删除商品属性
-- 分页查询全部商品属性
+- Query attribute list or parameter list by category (paged, type supported)
+- Add product attribute
+- Query a single product attribute
+- Edit product attribute
+- Batch delete product attributes
+- Query all product attributes with paging
 
-> **添加商品**
+> **Add product**
 
-- 选择商品分类：根据商品分类id查找分类
-- 选择品牌：查询全部品牌
-- 选择运费模版：查询全部运费模版
-- 设置会员价格：查询所有会员等级，传入List<PmsMemberPrice>
-- 添加阶梯价格: 参数传入List<PmsProductLadder>
-- 设置满减价格: 参数传入List<PmsProductFullReduction>
-- 选择商品属性类别:获取所有商品属性分类，根据商品属性分类的id获取规格和参数(type=0->规格；type=1->参数)
-- 选择规格并生成库存信息：前端实现
-- 添加sku库存信息：参数传入List<PmsSkuStock>
-- 设置属性图片：设置到pic和album_pics字段中去
-- 添加商品参数：参数传入List<PmsProductAttributeValue>
-- 添加自定义商品规格：参数传入List<PmsProductAttributeValue>
-- 关联专题:参数传入List<CmsSubjectProductRelation>关系
-- 关联优选:参数传入List<CmsPrefrenceAreaProductRelation>关系
+- Select product category: look up category by product category id
+- Select brand: query all brands
+- Select shipping template: query all shipping templates
+- Set member prices: query all member levels, pass in List<PmsMemberPrice>
+- Add tiered price: parameters passed in List<PmsProductLadder>
+- Set full-reduction price: parameters passed in List<PmsProductFullReduction>
+- Select product attribute category: get all product attribute categories, then get specifications and parameters by the attribute category id(type=0->Specifications;type=1->Parameters)
+- Select specifications and generate stock info: implemented on the frontend
+- Add SKU stock information: parameters passed in List<PmsSkuStock>
+- Set attribute images: set into the pic and album_pics fields
+- Add product parameters: parameters passed in List<PmsProductAttributeValue>
+- Add custom product specifications: parameters passed in List<PmsProductAttributeValue>
+- Associated topics: parameters passed in List<CmsSubjectProductRelation>Relation
+- Associated preferred: parameters passed in List<CmsPrefrenceAreaProductRelation>Relation
 
-> **修改商品**
+> **Modify product**
 
-- 根据商品id查询商品信息
-- 查询商品基本信息：商品分类名称、品牌名称、运费模版名称
-- 查询商品促销信息：商品的会员价格、阶梯价格、满减价格
-- 查询商品属性信息：商品属性类别名称、sku库存信息、属性分类对应规格和参数值
-- 查询商品关联信息：商品关联专题和关联优选
-- 修改商品信息：商品属性分类及规格不可修改，只支持单个sku的修改、删除、新增；商品属性分类及规格可以修改：修改后同时显示原sku库存及属性分类
+- Query product info by product id
+- Query basic product info: product category name, brand name, shipping template name
+- Query product promotion info: member price, tiered price, full-reduction price
+- Query product attribute info: attribute category name, SKU stock info, specifications and parameter values for the attribute category
+- Query product association info: associated topics and preferred zones
+- Modify product info: product attribute category and specifications cannot be modified; only individual SKUs can be modified, deleted or added; if attribute category and specifications can be modified: the original SKU stock and attribute category are shown after modification
 
-> **商品分页查询**
+> **Product paged query**
 
-- 商品的状态：全部商品、已上架、未上架、待审核、未通过 (publishStatus verifyStatus)
-- 商品名称(%name%)
-- 商品货号(productSn)
-- 商品分类id(productCategoryId)
-- 商品品牌id(brandId)
-- 批量操作：上下架、推荐、新品、转移分类、放入回收站、审核
-- 查看记录：审核记录，操作日志
-- sku:根据产品及sku编号获取sku信息，批量修改sku信息
+- Product statuses: all products, on shelf, off shelf, pending review, rejected (publishStatus verifyStatus)
+- Product name(%name%)
+- Product item number(productSn)
+- Product category id(productCategoryId)
+- Product brand id(brandId)
+- Batch operations: on/off shelf, recommend, new arrival, move category, move to recycle bin, review
+- View records: review records, operation logs
+- sku:Get SKU info by product and SKU number, batch modify SKU info
 
-> **商品回收管理**
+> **Product recycle management**
 
-- 分页展示回收商品列表
-- 回收商品还原功能
+- Show recycled product list with paging
+- Recycled product restore feature
 
-#### 促销管理
+#### Promotion management
 
-> **秒杀活动管理**
+> **Flash sale activity management**
 
-- 活动列表展示
-- 活动上下线
-- 设置活动商品
-- 添加、编辑、删除活动
+- Activity list display
+- Activity online/offline
+- Set activity products
+- Add, edit, delete activities
 
-> **优惠券管理**
+> **Coupon management**
 
-- 优惠券列表展示
-- 添加、编辑、删除优惠券
-- 查看优惠券领取记录
+- Coupon list display
+- Add, edit, delete coupons
+- View coupon claim records
 
-> **活动管理**
+> **Activity management**
 
-- 活动列表展示
-- 添加、编辑、删除活动
-- 活动上下线
-- 发布到广告
+- Activity list display
+- Add, edit, delete activities
+- Activity online/offline
+- Publish to advertisement
 
-> **首页推荐**
+> **Home recommendations**
 
-- 品牌推荐：列表展示、是否推荐、排序、删除、多选加入品牌
-- 新鲜好物：商品列表展示、是否推荐、排序、删除、多选加入商品
-- 人气推荐：商品列表展示、是否推荐、排序、删除、多选加入商品
-- 专题精选：专题列表展示、是否推荐、排序、删除、多选加入专题
-- 广告管理：广告列表展示、是否上线、排序、删除、添加编辑广告
+- Brand recommendations: list display, whether recommended, sorting, deletion, multi-select to add brands
+- Fresh picks: product list display, whether recommended, sorting, deletion, multi-select to add products
+- Popular recommendations: product list display, whether recommended, sorting, deletion, multi-select to add products
+- Topic picks: topic list display, whether recommended, sorting, deletion, multi-select to add to topics
+- Ad management: ad list display, whether online, sorting, deletion, add/edit ads
 
-#### 内容管理
+#### Content management
 
-> **专题管理**
+> **Topic management**
 
-- 专题列表：查看、删除、推荐专题
-- 添加、编辑专题：选择专题分类、添加、删除关联商品
-- 专题分类管理：控制显示、排序、编辑删除分类
+- Topic list: view, delete, recommend topics
+- Add, edit topics: select topic category, add, delete associated products
+- Topic category management: control display, sorting, edit and delete categories
 
-> **优选主题**
+> **Preferred theme**
 
-- 优选列表：控制显示、排序、删除
-- 添加、编辑优选：关联和删除商品
+- Preferred list: control display, sorting, deletion
+- Add, edit preferred: associate and remove products
 
-> **话题管理**
+> **Topic management**
 
-- 专题列表：查看、删除、热门话题
-- 话题分类管理：控制显示、排序、编辑删除分类
+- Topic list: view, delete, hot topics
+- Topic category management: control display, sorting, edit and delete categories
 
-> **帮助管理**
+> **Help management**
 
-- 帮助列表：查看、删除、控制显示
-- 添加、编辑帮助：选择帮助分类
-- 帮助分类管理：控制显示、排序、编辑删除分类
+- Help list: view, delete, control display
+- Add, edit help: select help category
+- Help category management: control display, sorting, edit and delete categories
 
-#### 用户管理
+#### User management
 
-> **用户管理**
+> **User management**
 
-- 用户列表：帐号启用、删除、群发短信
-- 批量操作：群发短信、站内信、推送、设置标签、赠送优惠券
-- 查看、编辑用户信息：用户详情（统计信息、收货地址、订单记录）、编辑资料、登录日志
-- 购买力筛选：最近消费、消费次数、消费金额、订单均价、商品分类、会员等级、用户标签
-- 用户标签管理：标签列表、添加、编辑、删除
-- 会员等级设置：列表、添加、编辑、设置默认会员等级
+- User list: account enable, delete, mass SMS
+- Batch operations: mass SMS, in-site message, push, set tags, grant coupons
+- View and edit user info: user details (statistics, shipping addresses, order records), edit profile, login logs
+- Purchasing power filters: recent spending, purchase count, spending amount, average order price, product category, member level, user tags
+- User tag management: tag list, add, edit, delete
+- Member level settings: list, add, edit, set default member level
 
-> **成才值及积分**
+> **Growth value and points**
 
-- 成长值及积分查询：列表展示、积分明细、成长值明细、修改数值
-- 任务奖励设置：新手任务、日常任务
-- 更多规则设置：成长值规则、积分规则、积分消费设置
+- Growth value and points query: list display, points details, growth value details, modify values
+- Task reward settings: newcomer tasks, daily tasks
+- More rule settings: growth value rules, points rules, points consumption settings
 
-#### 订单管理
+#### Order management
 
-> **订单列表**
+> **Order list**
 
-- 订单搜索：订单编号、收货人姓名/号码、订单状态、订单分类、订单来源、提交时间
-- 订单操作：查看订单、关闭订单、订单发货、订单跟踪、删除订单
-- 批量操作：批量发货、关闭订单、删除订单
+- Order search: order number, recipient name/number, order status, order category, order source, submission time
+- Order operations: view order, close order, ship order, track order, delete order
+- Batch operations: batch ship, close orders, delete orders
 
-> **查看订单**
+> **View order**
 
-- 订单状态：提交订单、支付订单、平台发货、确认收货、完成评价
-- 订单详情操作：修改发票信息、修改收货人信息、修改商品信息、修改费用信息、发送站内信、关闭订单、备注订单、取消订单、订单跟踪、删除订单
-- 订单基本信息：订单信息、优惠信息、用户信息
-- 发票信息：类型、抬头、内容、收票人信息
-- 收货人信息：收货人、手机号、邮政编码、收货地址
-- 商品信息：包含商品基本信息
-- 费用信息：合计及优惠信息
-- 操作信息：订单状态改变记录
+- Order status: submit order, pay order, platform ships, confirm receipt, review completed
+- Order detail operations: modify invoice info, modify recipient info, modify product info, modify fee info, send in-site message, close order, add order remarks, cancel order, track order, delete order
+- Basic order info: order info, discount info, user info
+- Invoice info: type, title, content, recipient info
+- Recipient info: recipient, phone number, postal code, shipping address
+- Product info: includes basic product information
+- Fee info: subtotal and discount info
+- Operation info: order status change records
 
-> **订单设置**
+> **Order settings**
 
-- 秒杀订单超时时间
-- 正常订单超时时间
-- 订单自动完成时间
-- 自动结束交易时间
-- 自动好评时间
+- Flash sale order timeout
+- Normal order timeout
+- Order auto-completion time
+- Auto-end transaction time
+- Auto-review time
 
-> **退货申请处理**
+> **Return request handling**
 
-- 退货申请搜索：服务单号、收货人姓名/号码、处理状态、申请时间、操作人员、处理时间
-- 批量操作：删除
-- 查看详情：退货商品、服务单信息、确认退货、拒绝退货、确认收货
+- Return request search: service order number, recipient name/number, handling status, application time, operator, handling time
+- Batch operation: delete
+- View details: returned products, service order info, confirm return, reject return, confirm receipt
 
-> **退货原因设置**
+> **Return reason settings**
 
-- 原因列表：类型、排序、是否启用、添加时间
-- 添加、编辑原因：同上
-- 批量操作：删除
+- Reason list: type, sort, whether enabled, added time
+- Add, edit reasons: same as above
+- Batch operation: delete
 
-#### 权限管理 ✔
+#### Permission management ✔
 
-> **权限管理**
+> **Permission management**
 
-- 权限管理：添加权限、删除权限、修改权限、以树形结构返回权限
-- 角色管理：添加角色、删除角色、更新角色、角色列表、获取相应角色权限、修改相应角色权限
-- 成员管理：添加、编辑、删除成员、成员列表、为成员分配角色、获取成员角色、分配+-权限、获取权限列表
+- Permission management: add, delete, modify permissions, return permissions as a tree
+- Role management: add role, delete role, update role, role list, get corresponding role permissions, modify corresponding role permissions
+- Member management: add, edit, delete members, member list, assign roles to members, get member roles, assign +/- permissions, get permission list
 
-角色 | 菜单 
+Role | Menu 
 ----|----
-管理员 | 所有菜单权限
-运营 | 首页、用户、促销、运营、内容
-财务 | 首页、统计、财务
-美工 | 首页、商品
-客服 | 首页、商品、订单
+Admin | All menu permissions
+Operations | Home, users, promotions, operations, content
+Finance | Home, statistics, finance
+Designer | Home, products
+Customer service | Home, products, orders
 
-### 前台功能
+### Storefront features
 
-#### 商品搜索 ✔
+#### Product search ✔
 
-> **综合搜索功能**
+> **Comprehensive search feature**
 
-- 搜索：根据商品标题、副标题、关键字进行搜索；
-- 筛选：未选择分类时聚合搜索结果，选择出现次数最多的分类，选择分类以后可以根据选择分类的筛选字段进行筛选；
-- 排序：按新品、销量、价格进行排序
-- 搜索返回结果：商品ID、商品图片、名称、副标题、价格、商品销量、新品、商品的参数、品牌名称、分类名称
-- 接口：从数据库中查询相关数据并导入es,插入（修改）数据接口，删除数据接口
-- 品牌分类筛选：根据搜索结果聚合返回品牌、分类及属性
+- Search: search by product title, subtitle and keywords;
+- Filtering: when no category is selected, aggregate the search results and pick the most frequent category; after a category is chosen, filter further using that category’s filter fields;
+- Sort: by new arrivals, sales, price
+- Search result: product ID, image, name, subtitle, price, sales, new arrival, product parameters, brand name, category name
+- API: query the relevant data from the database and import it es,Insert (modify) data API, delete data API
+- Brand category filter: aggregate and return brands, categories and attributes based on search results
 
-> **商品推荐功能**
+> **Product recommendation feature**
 
-- 推荐某商品的相关商品、根据该商品的品牌（10）、分类（6）、名称（8）、关键字（2）、副标题（2）
-- 根据用户一周浏览记录推荐商品，根据用户搜索记录推荐商品
+- Recommend related products for a product, based on its brand (10), category (6), name (8), keywords (2), subtitle (2)
+- Recommend products based on the user’s one-week browsing history and search records
 
-> **商品热搜功能**
+> **Product trending search feature**
 
-- 根据用户搜索记录聚合生成热搜词
+- Aggregate trending search terms from user search records
 
-> **商品搜索联想功能** 
+> **Product search suggestion feature** 
 
-- 根据用户搜索记录聚合生成热搜词
+- Aggregate trending search terms from user search records
 
-#### 购物流程 ✔
+#### Shopping flow ✔
 
-> **购物车** 
+> **Shopping cart** 
 
-- 添加商品到购物车
-- 购物车商品列表（商品主图、商品名称、商品数量、商品规格）
-- 修改购物车中商品数量
-- 购物车中商品重选规格
-- 购物车中商品删除功能
+- Add product to cart
+- Cart product list (product main image, name, quantity, specifications)
+- Modify product quantity in cart
+- Reselect specifications for products in the cart
+- Delete products in the cart
 
-> **生成确认单** 
+> **Generate confirmation order** 
 
-- 生成确认单信息：收货信息、商品信息、价格信息、发票信息、支付方式
-- 选择收货地址：默认收货地址
-- 选择优惠券及积分抵扣：展示可用优惠券和不可以优惠券
-- 计算商品价格：商品合计、运费、优惠券抵扣、积分抵扣、活动优惠
-- 选择支付方式：在线支付及货到付款
-- 计算应付金额：合计+运费-优惠券抵扣-积分抵扣-活动优惠
+- Generate confirmation order info: delivery info, product info, price info, invoice info, payment method
+- Select shipping address: default shipping address
+- Select coupon and points deduction: show usable and unusable coupons
+- Calculate product price: product subtotal, shipping, coupon deduction, points deduction, activity discount
+- Select payment method: online payment and cash on delivery
+- Calculate amount payable: subtotal + shipping - coupon deduction - points deduction - activity discount
 
-> **提交订单** 
+> **Submit order** 
 
-- 将确认单信息转化为订单
-- 删除购物车中相关商品
-- 添加订单到数据库并锁定库存
-- 在线支付选择支付方式：支付宝、微信、银联、ApplePay
+- Convert confirmation order info into an order
+- Delete related products from the cart
+- Add the order to the database and lock stock
+- Online payment method selection: Alipay, WeChat, UnionPay,ApplePay
 
-> **支付订单**
+> **Pay order**
 
-- 支付完成后修改订单状态为已支付、扣除库存
+- After payment completes, change order status to paid and deduct stock
 
-> **取消订单（未支付情况下）**
+> **Cancel order (when unpaid)**
 
-- 订单超时后自动取消订单，解除商品库存锁定，返还优惠券，积分
+- Automatically cancel orders after timeout, release product stock locks, return coupons and points
 
-#### 会员模块（我的）✔
+#### Member module (Me)✔
 
-> **我的关注**
+> **My follows**
 
-- 关注品牌列表：品牌logo、名称、地址、关注数量
-- 取消关注功能
-- 关注列表展示
+- Followed brand list: brand logo, name, address, follower count
+- Unfollow feature
+- Follow list display
 
-> **我的收藏**
+> **My favorites**
 
-- 收藏的商品：商品主图、名称、卖点、价格、找相似
-- 收藏的专题：专题主图、标题、副标题、收藏数、浏览数、评论数
-- 收藏的话题：话题主图、标题、副标题、收藏数、浏览数、评论数
+- Favorited products: product main image, name, selling point, price, find similar
+- Favorited topics: topic main image, title, subtitle, favorite count, view count, comment count
+- Favorited topics: topic main image, title, subtitle, favorite count, view count, comment count
 
-> **我的足迹**
+> **My footprints**
 
-- 浏览过的商品：商品主图、名称、卖点、价格、找相似
-- 删除记录功能
-- 浏览列表展示
+- Browsed products: product main image, name, selling point, price, find similar
+- Delete record feature
+- Browsing list display
 
-> **会员登录注册**
+> **Member login and registration**
 
-- 登录功能：https登录
-- 注册功能：用户名、密码、手机号、手机验证码
-- 获取验证码：后台生成验证码，验证码绑定手机号
-- 忘记密码：手机号、短信验证码、新密码
-- 登出功能
+- Login feature: https login
+- Registration: username, password, phone number, SMS verification code
+- Get verification code: the backend generates the code, bound to the phone number
+- Forgot password: phone number, SMS verification code, new password
+- Logout feature

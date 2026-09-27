@@ -6,16 +6,16 @@ import com.macro.mall.dto.OssPolicyResult;
 import jakarta.servlet.http.HttpServletRequest;
 
 /**
- * oss上传管理Service
+ * oss Upload management Service
  * Created by macro on 2018/5/17.
  */
 public interface OssService {
     /**
-     * oss上传策略生成
+     * oss Upload policy generation
      */
     OssPolicyResult policy();
     /**
-     * oss上传成功回调
+     * oss Upload success callback
      */
     OssCallbackResult callback(HttpServletRequest request);
 }

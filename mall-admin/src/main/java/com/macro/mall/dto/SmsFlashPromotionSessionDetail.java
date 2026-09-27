@@ -6,12 +6,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 包含商品数量的场次信息
+ * Session info including product counts
  * Created by macro on 2018/11/19.
  */
 public class SmsFlashPromotionSessionDetail extends SmsFlashPromotionSession {
     @Setter
     @Getter
-    @Schema(title = "商品数量")
+    @Schema(title = "Product quantity")
     private Long productCount;
 }

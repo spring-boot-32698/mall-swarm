@@ -5,14 +5,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 用户登录参数
+ * User login parameters
  * Created by macro on 2018/4/26.
  */
 @Getter
 @Setter
 public class UmsAdminLoginParam {
-    @Schema(title = "用户名", required = true)
+    @Schema(title = "Username", required = true)
     private String username;
-    @Schema(title = "密码", required = true)
+    @Schema(title = "Password", required = true)
     private String password;
 }

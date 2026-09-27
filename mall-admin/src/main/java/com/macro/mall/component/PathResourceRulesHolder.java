@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import jakarta.annotation.PostConstruct;
 
 /**
- * 路径与资源访问对应关系操作组件
+ * Component for operating path-to-resource access mappings
  * Created by macro on 2020/7/17.
  */
 @Component

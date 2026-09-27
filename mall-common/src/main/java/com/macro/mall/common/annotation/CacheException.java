@@ -3,7 +3,7 @@ package com.macro.mall.common.annotation;
 import java.lang.annotation.*;
 
 /**
- * 自定义注解，有该注解的缓存方法会抛出异常
+ * Custom annotation; cached methods carrying it will throw an exception
  */
 @Documented
 @Target(ElementType.METHOD)

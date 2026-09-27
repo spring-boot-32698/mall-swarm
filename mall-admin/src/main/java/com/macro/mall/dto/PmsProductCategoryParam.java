@@ -10,34 +10,34 @@ import jakarta.validation.constraints.NotEmpty;
 import java.util.List;
 
 /**
- * 添加更新产品分类的参数
+ * Add parameters for updating product category
  * Created by macro on 2018/4/26.
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class PmsProductCategoryParam {
-    @Schema(title = "父分类的编号")
+    @Schema(title = "Parent category ID")
     private Long parentId;
     @NotEmpty
-    @Schema(title = "商品分类名称",required = true)
+    @Schema(title = "Product category name",required = true)
     private String name;
-    @Schema(title = "分类单位")
+    @Schema(title = "Category unit")
     private String productUnit;
-    @FlagValidator(value = {"0","1"},message = "状态只能为0或1")
-    @Schema(title = "是否在导航栏显示")
+    @FlagValidator(value = {"0","1"},message = "Status can only be 0 or 1")
+    @Schema(title = "Whether to show in the navigation bar")
     private Integer navStatus;
-    @FlagValidator(value = {"0","1"},message = "状态只能为0或1")
-    @Schema(title = "是否进行显示")
+    @FlagValidator(value = {"0","1"},message = "Status can only be 0 or 1")
+    @Schema(title = "Whether to show")
     private Integer showStatus;
     @Min(value = 0)
-    @Schema(title = "排序")
+    @Schema(title = "Sort")
     private Integer sort;
-    @Schema(title = "图标")
+    @Schema(title = "Icon")
     private String icon;
-    @Schema(title = "关键字")
+    @Schema(title = "Keyword")
     private String keywords;
-    @Schema(title = "描述")
+    @Schema(title = "Description")
     private String description;
-    @Schema(title = "产品相关筛选属性集合")
+    @Schema(title = "Set of product-related filter attributes")
     private List<Long> productAttributeIdList;
 }

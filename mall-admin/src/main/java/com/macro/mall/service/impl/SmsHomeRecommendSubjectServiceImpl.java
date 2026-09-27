@@ -12,7 +12,7 @@ import org.springframework.util.StringUtils;
 import java.util.List;
 
 /**
- * 首页专题推荐管理Service实现类
+ * Home topic recommendation management Service implementation class
  * Created by macro on 2018/11/7.
  */
 @Service

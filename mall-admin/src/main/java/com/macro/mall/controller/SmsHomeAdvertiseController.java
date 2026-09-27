@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 首页轮播广告管理Controller
+ * Home carousel ad management Controller
  * Created by macro on 2018/11/7.
  */
 @Controller
-@Tag(name = "SmsHomeAdvertiseController", description = "首页轮播广告管理")
+@Tag(name = "SmsHomeAdvertiseController", description = "Home carousel ad management")
 @RequestMapping("/home/advertise")
 public class SmsHomeAdvertiseController {
     @Autowired
     private SmsHomeAdvertiseService advertiseService;
 
-    @Operation(summary = "添加广告")
+    @Operation(summary = "Add advertisement")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult create(@RequestBody SmsHomeAdvertise advertise) {
@@ -34,7 +34,7 @@ public class SmsHomeAdvertiseController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "删除广告")
+    @Operation(summary = "Delete advertisement")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(@RequestParam("ids") List<Long> ids) {
@@ -44,7 +44,7 @@ public class SmsHomeAdvertiseController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "修改上下线状态")
+    @Operation(summary = "Modify online/offline status")
     @RequestMapping(value = "/update/status/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updateStatus(@PathVariable Long id, Integer status) {
@@ -54,7 +54,7 @@ public class SmsHomeAdvertiseController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "获取广告详情")
+    @Operation(summary = "Get advertisement details")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<SmsHomeAdvertise> getItem(@PathVariable Long id) {
@@ -62,7 +62,7 @@ public class SmsHomeAdvertiseController {
         return CommonResult.success(advertise);
     }
 
-    @Operation(summary = "修改广告")
+    @Operation(summary = "Modify advertisement")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long id, @RequestBody SmsHomeAdvertise advertise) {
@@ -72,7 +72,7 @@ public class SmsHomeAdvertiseController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "分页查询广告")
+    @Operation(summary = "Query advertisements with paging")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<SmsHomeAdvertise>> list(@RequestParam(value = "name", required = false) String name,

@@ -6,33 +6,33 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * 首页品牌管理Service
+ * Home brand management Service
  * Created by macro on 2018/11/6.
  */
 public interface SmsHomeBrandService {
     /**
-     * 添加首页品牌推荐
+     * Add home brand recommendation
      */
     @Transactional
     int create(List<SmsHomeBrand> homeBrandList);
 
     /**
-     * 修改品牌推荐排序
+     * Modify brand recommendation sort
      */
     int updateSort(Long id, Integer sort);
 
     /**
-     * 批量删除品牌推荐
+     * Batch delete brand recommendations
      */
     int delete(List<Long> ids);
 
     /**
-     * 更新推荐状态
+     * Update recommendation status
      */
     int updateRecommendStatus(List<Long> ids, Integer recommendStatus);
 
     /**
-     * 分页查询品牌推荐
+     * Query brand recommendations with paging
      */
     List<SmsHomeBrand> list(String brandName, Integer recommendStatus, Integer pageSize, Integer pageNum);
 }

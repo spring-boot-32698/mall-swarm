@@ -6,42 +6,42 @@ import com.macro.mall.model.SmsFlashPromotionSession;
 import java.util.List;
 
 /**
- * 限时购场次管理Service
+ * Flash sale session management Service
  * Created by macro on 2018/11/16.
  */
 public interface SmsFlashPromotionSessionService {
     /**
-     * 添加场次
+     * Add session
      */
     int create(SmsFlashPromotionSession promotionSession);
 
     /**
-     * 修改场次
+     * Modify session
      */
     int update(Long id, SmsFlashPromotionSession promotionSession);
 
     /**
-     * 修改场次启用状态
+     * Modify session enabled status
      */
     int updateStatus(Long id, Integer status);
 
     /**
-     * 删除场次
+     * Delete session
      */
     int delete(Long id);
 
     /**
-     * 获取详情
+     * Get details
      */
     SmsFlashPromotionSession getItem(Long id);
 
     /**
-     * 根据启用状态获取场次列表
+     * Get session list by enabled status
      */
     List<SmsFlashPromotionSession> list();
 
     /**
-     * 获取全部可选场次及其数量
+     * Get all available sessions and their counts
      */
     List<SmsFlashPromotionSessionDetail> selectList(Long flashPromotionId);
 }

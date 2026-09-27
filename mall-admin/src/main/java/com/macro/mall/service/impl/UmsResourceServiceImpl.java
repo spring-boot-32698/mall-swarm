@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 /**
- * 后台资源管理Service实现类
+ * Admin resource management Service implementation class
  * Created by macro on 2020/2/2.
  */
 @Service

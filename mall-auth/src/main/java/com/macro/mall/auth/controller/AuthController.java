@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @auther macrozheng
- * @description 统一认证授权接口
+ * @description Unified authentication and authorization API
  * @date 2024/1/30
  * @github https://github.com/macrozheng
  */
 @Controller
-@Tag(name = "AuthController", description = "统一认证授权接口")
+@Tag(name = "AuthController", description = "Unified authentication and authorization API")
 @RequestMapping("/auth")
 public class AuthController {
 
@@ -31,7 +31,7 @@ public class AuthController {
     @Autowired
     private UmsMemberService memberService;
 
-    @Operation(summary = "登录以后返回token")
+    @Operation(summary = "Return after login token")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult login(@RequestParam String clientId,
@@ -45,7 +45,7 @@ public class AuthController {
         }else if(AuthConstant.PORTAL_CLIENT_ID.equals(clientId)){
             return memberService.login(username,password);
         }else{
-            return CommonResult.failed("clientId不正确");
+            return CommonResult.failed("clientId Incorrect");
         }
     }
 }

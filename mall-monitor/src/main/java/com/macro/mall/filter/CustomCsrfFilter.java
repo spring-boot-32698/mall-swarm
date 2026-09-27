@@ -30,7 +30,7 @@ import java.io.IOException;
 
 /**
  * @auther macrozheng
- * @description 自定义CSRF过滤器
+ * @description Custom CSRF filter
  * @date 2024/1/16
  * @github https://github.com/macrozheng
  */

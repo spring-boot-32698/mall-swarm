@@ -16,16 +16,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 会员关注品牌管理Controller
+ * Member followed brand management Controller
  * Created by macro on 2018/8/2.
  */
 @Controller
-@Tag(name = "MemberAttentionController", description = "会员关注品牌管理")
+@Tag(name = "MemberAttentionController", description = "Member followed brand management")
 @RequestMapping("/member/attention")
 public class MemberAttentionController {
     @Autowired
     private MemberAttentionService memberAttentionService;
-    @Operation(summary = "添加品牌关注")
+    @Operation(summary = "Follow brand")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult add(@RequestBody MemberBrandAttention memberBrandAttention) {
@@ -37,7 +37,7 @@ public class MemberAttentionController {
         }
     }
 
-    @Operation(summary = "取消关注")
+    @Operation(summary = "Unfollow")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(Long brandId) {
@@ -49,7 +49,7 @@ public class MemberAttentionController {
         }
     }
 
-    @Operation(summary = "显示关注列表")
+    @Operation(summary = "Show follow list")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<MemberBrandAttention>> list(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
@@ -58,7 +58,7 @@ public class MemberAttentionController {
         return CommonResult.success(CommonPage.restPage(page));
     }
 
-    @Operation(summary = "显示关注品牌详情")
+    @Operation(summary = "Show followed brand details")
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<MemberBrandAttention> detail(@RequestParam Long brandId) {
@@ -66,7 +66,7 @@ public class MemberAttentionController {
         return CommonResult.success(memberBrandAttention);
     }
 
-    @Operation(summary = "清空关注列表")
+    @Operation(summary = "Clear follow list")
     @RequestMapping(value = "/clear", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult clear() {

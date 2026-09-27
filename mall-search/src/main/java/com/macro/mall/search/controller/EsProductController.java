@@ -18,17 +18,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 搜索商品管理Controller
+ * Search product management Controller
  * Created by macro on 2018/6/19.
  */
 @Controller
-@Tag(name = "EsProductController", description = "搜索商品管理")
+@Tag(name = "EsProductController", description = "Search product management")
 @RequestMapping("/esProduct")
 public class EsProductController {
     @Autowired
     private EsProductService esProductService;
 
-    @Operation(summary = "导入所有数据库中商品到ES")
+    @Operation(summary = "Import all products in the database into ES")
     @RequestMapping(value = "/importAll", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<Integer> importAllList() {
@@ -36,7 +36,7 @@ public class EsProductController {
         return CommonResult.success(count);
     }
 
-    @Operation(summary = "根据id删除商品")
+    @Operation(summary = "Delete product by id")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<Object> delete(@PathVariable Long id) {
@@ -44,7 +44,7 @@ public class EsProductController {
         return CommonResult.success(null);
     }
 
-    @Operation(summary = "根据id批量删除商品")
+    @Operation(summary = "Batch delete products by ids")
     @RequestMapping(value = "/delete/batch", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<Object> delete(@RequestParam("ids") List<Long> ids) {
@@ -52,7 +52,7 @@ public class EsProductController {
         return CommonResult.success(null);
     }
 
-    @Operation(summary = "根据id创建商品")
+    @Operation(summary = "Create product by id")
     @RequestMapping(value = "/create/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<EsProduct> create(@PathVariable Long id) {
@@ -64,7 +64,7 @@ public class EsProductController {
         }
     }
 
-    @Operation(summary = "简单搜索")
+    @Operation(summary = "Simple search")
     @RequestMapping(value = "/search/simple", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<EsProduct>> search(@RequestParam(required = false) String keyword,
@@ -74,8 +74,8 @@ public class EsProductController {
         return CommonResult.success(CommonPage.restPage(esProductPage));
     }
 
-    @Operation(summary = "综合搜索、筛选、排序")
-    @Parameter(name = "sort", description = "排序字段:0->按相关度；1->按新品；2->按销量；3->价格从低到高；4->价格从高到低", in = ParameterIn.QUERY, schema = @Schema(type = "integer",defaultValue = "0",allowableValues = {"0","1","2","3","4"}))
+    @Operation(summary = "Combined search, filter, sort")
+    @Parameter(name = "sort", description = "Sort field:0->By relevance;1->By new arrivals;2->By sales;3->Price low to high;4->Price high to low", in = ParameterIn.QUERY, schema = @Schema(type = "integer",defaultValue = "0",allowableValues = {"0","1","2","3","4"}))
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<EsProduct>> search(@RequestParam(required = false) String keyword,
@@ -88,7 +88,7 @@ public class EsProductController {
         return CommonResult.success(CommonPage.restPage(esProductPage));
     }
 
-    @Operation(summary = "根据商品id推荐商品")
+    @Operation(summary = "Recommend products by product id")
     @RequestMapping(value = "/recommend/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<EsProduct>> recommend(@PathVariable Long id,
@@ -98,7 +98,7 @@ public class EsProductController {
         return CommonResult.success(CommonPage.restPage(esProductPage));
     }
 
-    @Operation(summary = "获取搜索的相关品牌、分类及筛选属性")
+    @Operation(summary = "Get related brands, categories and filter attributes of the search")
     @RequestMapping(value = "/search/relate", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<EsProductRelatedInfo> searchRelatedInfo(@RequestParam(required = false) String keyword) {

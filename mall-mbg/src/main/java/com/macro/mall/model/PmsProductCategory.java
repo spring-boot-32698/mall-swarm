@@ -6,32 +6,32 @@ import java.io.Serializable;
 public class PmsProductCategory implements Serializable {
     private Long id;
 
-    @Schema(title = "上机分类的编号：0表示一级分类")
+    @Schema(title = "Parent category ID: 0 means top-level category")
     private Long parentId;
 
     private String name;
 
-    @Schema(title = "分类级别：0->1级；1->2级")
+    @Schema(title = "Category level:0->1 level;1->2 level")
     private Integer level;
 
     private Integer productCount;
 
     private String productUnit;
 
-    @Schema(title = "是否显示在导航栏：0->不显示；1->显示")
+    @Schema(title = "Whether to show in navigation bar:0->Not displayed;1->Show")
     private Integer navStatus;
 
-    @Schema(title = "显示状态：0->不显示；1->显示")
+    @Schema(title = "Display status:0->Not displayed;1->Show")
     private Integer showStatus;
 
     private Integer sort;
 
-    @Schema(title = "图标")
+    @Schema(title = "Icon")
     private String icon;
 
     private String keywords;
 
-    @Schema(title = "描述")
+    @Schema(title = "Description")
     private String description;
 
     private static final long serialVersionUID = 1L;

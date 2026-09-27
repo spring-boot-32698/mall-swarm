@@ -8,29 +8,29 @@ public class PmsBrand implements Serializable {
 
     private String name;
 
-    @Schema(title = "首字母")
+    @Schema(title = "Initial letter")
     private String firstLetter;
 
     private Integer sort;
 
-    @Schema(title = "是否为品牌制造商：0->不是；1->是")
+    @Schema(title = "Whether it is a brand manufacturer:0->No;1->Yes")
     private Integer factoryStatus;
 
     private Integer showStatus;
 
-    @Schema(title = "产品数量")
+    @Schema(title = "Product count")
     private Integer productCount;
 
-    @Schema(title = "产品评论数量")
+    @Schema(title = "Product review count")
     private Integer productCommentCount;
 
-    @Schema(title = "品牌logo")
+    @Schema(title = "Brand logo")
     private String logo;
 
-    @Schema(title = "专区大图")
+    @Schema(title = "Zone banner image")
     private String bigPic;
 
-    @Schema(title = "品牌故事")
+    @Schema(title = "Brand story")
     private String brandStory;
 
     private static final long serialVersionUID = 1L;

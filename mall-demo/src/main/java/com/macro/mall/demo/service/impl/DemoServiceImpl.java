@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * DemoService实现类
+ * DemoService Implementation class
  */
 @Service
 public class DemoServiceImpl implements DemoService {

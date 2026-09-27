@@ -7,31 +7,31 @@ import java.util.Map;
 
 /**
  * @auther macrozheng
- * @description 支付宝支付Service
+ * @description Alipay payment Service
  * @date 2023/9/8
  * @github https://github.com/macrozheng
  */
 public interface AlipayService {
     /**
-     * 根据提交参数生成电脑支付页面
+     * Generate desktop payment page from submitted parameters
      */
     String pay(AliPayParam aliPayParam);
 
     /**
-     * 支付宝异步回调处理
+     * Alipay asynchronous callback handling
      */
     String notify(Map<String, String> params);
 
     /**
-     * 查询支付宝交易状态
-     * @param outTradeNo 商户订单编号
-     * @param tradeNo 支付宝交易编号
-     * @return 支付宝交易状态
+     * Query Alipay transaction status
+     * @param outTradeNo Merchant order ID
+     * @param tradeNo Alipay transaction number
+     * @return Alipay transaction status
      */
     String query(String outTradeNo, String tradeNo);
 
     /**
-     * 根据提交参数生成手机支付页面
+     * Generate mobile payment page from submitted parameters
      */
     String webPay(AliPayParam aliPayParam);
 }

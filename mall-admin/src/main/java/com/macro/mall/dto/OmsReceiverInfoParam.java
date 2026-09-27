@@ -5,28 +5,28 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 订单修改收货人信息参数
+ * Order modify recipient info parameters
  * Created by macro on 2018/10/29.
  */
 @Getter
 @Setter
 public class OmsReceiverInfoParam {
-    @Schema(title = "订单ID")
+    @Schema(title = "Order ID")
     private Long orderId;
-    @Schema(title = "收货人姓名")
+    @Schema(title = "Recipient name")
     private String receiverName;
-    @Schema(title = "收货人电话")
+    @Schema(title = "Recipient phone")
     private String receiverPhone;
-    @Schema(title = "收货人邮编")
+    @Schema(title = "Recipient postal code")
     private String receiverPostCode;
-    @Schema(title = "详细地址")
+    @Schema(title = "Detailed address")
     private String receiverDetailAddress;
-    @Schema(title = "省份/直辖市")
+    @Schema(title = "Province/Municipality")
     private String receiverProvince;
-    @Schema(title = "城市")
+    @Schema(title = "City")
     private String receiverCity;
-    @Schema(title = "区")
+    @Schema(title = "District")
     private String receiverRegion;
-    @Schema(title = "订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单")
+    @Schema(title = "Order status:0->Pending payment;1->Pending shipment;2->Shipped;3->Completed;4->Closed;5->Invalid order")
     private Integer status;
 }

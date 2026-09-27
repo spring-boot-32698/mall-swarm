@@ -26,11 +26,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * 后台用户管理
+ * Admin user management
  * Created by macro on 2018/4/26.
  */
 @Controller
-@Tag(name = "UmsAdminController", description = "后台用户管理")
+@Tag(name = "UmsAdminController", description = "Admin user management")
 @RequestMapping("/admin")
 public class UmsAdminController {
     @Autowired
@@ -40,7 +40,7 @@ public class UmsAdminController {
     @Value("${sa-token.token-prefix}")
     private String tokenHead;
 
-    @Operation(summary = "用户注册")
+    @Operation(summary = "User registration")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<UmsAdmin> register(@Validated @RequestBody UmsAdminParam umsAdminParam) {
@@ -51,13 +51,13 @@ public class UmsAdminController {
         return CommonResult.success(umsAdmin);
     }
 
-    @Operation(summary = "登录以后返回token")
+    @Operation(summary = "Return after login token")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult login(@Validated @RequestBody UmsAdminLoginParam umsAdminLoginParam) {
         SaTokenInfo saTokenInfo  = adminService.login(umsAdminLoginParam.getUsername(), umsAdminLoginParam.getPassword());
         if (saTokenInfo  == null) {
-            return CommonResult.validateFailed("用户名或密码错误");
+            return CommonResult.validateFailed("Incorrect username or password");
         }
         Map<String, String> tokenMap = new HashMap<>();
         tokenMap.put("token", saTokenInfo.getTokenValue() );
@@ -65,7 +65,7 @@ public class UmsAdminController {
         return CommonResult.success(tokenMap);
     }
 
-    @Operation(summary = "获取当前登录用户信息")
+    @Operation(summary = "Get the current logged-in user info")
     @RequestMapping(value = "/info", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult getAdminInfo() {
@@ -82,7 +82,7 @@ public class UmsAdminController {
         return CommonResult.success(data);
     }
 
-    @Operation(summary = "登出功能")
+    @Operation(summary = "Logout feature")
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult logout() {
@@ -90,7 +90,7 @@ public class UmsAdminController {
         return CommonResult.success(null);
     }
 
-    @Operation(summary = "根据用户名或姓名分页获取用户列表")
+    @Operation(summary = "Get user list with paging by username or name")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<UmsAdmin>> list(@RequestParam(value = "keyword", required = false) String keyword,
@@ -100,7 +100,7 @@ public class UmsAdminController {
         return CommonResult.success(CommonPage.restPage(adminList));
     }
 
-    @Operation(summary = "获取指定用户信息")
+    @Operation(summary = "Get specified user info")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<UmsAdmin> getItem(@PathVariable Long id) {
@@ -108,7 +108,7 @@ public class UmsAdminController {
         return CommonResult.success(admin);
     }
 
-    @Operation(summary = "修改指定用户信息")
+    @Operation(summary = "Modify specified user information")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long id, @RequestBody UmsAdmin admin) {
@@ -119,7 +119,7 @@ public class UmsAdminController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "修改指定用户密码")
+    @Operation(summary = "Modify specified user’s password")
     @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updatePassword(@RequestBody UpdateAdminPasswordParam updatePasswordParam) {
@@ -127,17 +127,17 @@ public class UmsAdminController {
         if (status > 0) {
             return CommonResult.success(status);
         } else if (status == -1) {
-            return CommonResult.failed("提交参数不合法");
+            return CommonResult.failed("Submitted parameters are invalid");
         } else if (status == -2) {
-            return CommonResult.failed("找不到该用户");
+            return CommonResult.failed("User not found");
         } else if (status == -3) {
-            return CommonResult.failed("旧密码错误");
+            return CommonResult.failed("Old password is incorrect");
         } else {
             return CommonResult.failed();
         }
     }
 
-    @Operation(summary = "删除指定用户信息")
+    @Operation(summary = "Delete specified user information")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(@PathVariable Long id) {
@@ -148,7 +148,7 @@ public class UmsAdminController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "修改帐号状态")
+    @Operation(summary = "Modify account status")
     @RequestMapping(value = "/updateStatus/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updateStatus(@PathVariable Long id,@RequestParam(value = "status") Integer status) {
@@ -161,7 +161,7 @@ public class UmsAdminController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "给用户分配角色")
+    @Operation(summary = "Assign roles to user")
     @RequestMapping(value = "/role/update", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updateRole(@RequestParam("adminId") Long adminId,
@@ -173,7 +173,7 @@ public class UmsAdminController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "获取指定用户的角色")
+    @Operation(summary = "Get roles of the specified user")
     @RequestMapping(value = "/role/{adminId}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<UmsRole>> getRoleList(@PathVariable Long adminId) {

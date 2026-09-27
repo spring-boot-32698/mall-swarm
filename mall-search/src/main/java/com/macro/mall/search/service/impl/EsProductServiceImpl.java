@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 
 
 /**
- * 搜索商品管理Service实现类
+ * Product search management Service implementation class
  * Created by macro on 2018/6/19.
  */
 @Service
@@ -93,9 +93,9 @@ public class EsProductServiceImpl implements EsProductService {
     public Page<EsProduct> search(String keyword, Long brandId, Long productCategoryId, Integer pageNum, Integer pageSize,Integer sort) {
         Pageable pageable = PageRequest.of(pageNum, pageSize);
         NativeQueryBuilder nativeQueryBuilder = new NativeQueryBuilder();
-        //分页
+        //Paging
         nativeQueryBuilder.withPageable(pageable);
-        //过滤
+        //Filter
         if (brandId != null || productCategoryId != null) {
             Query boolQuery = QueryBuilders.bool(builder -> {
                 if (brandId != null) {
@@ -108,7 +108,7 @@ public class EsProductServiceImpl implements EsProductService {
             });
             nativeQueryBuilder.withFilter(boolQuery);
         }
-        //搜索
+        //Search
         if (StrUtil.isEmpty(keyword)) {
             nativeQueryBuilder.withQuery(QueryBuilders.matchAll(builder -> builder));
         } else {
@@ -131,21 +131,21 @@ public class EsProductServiceImpl implements EsProductService {
                     .minScore(2.0);
             nativeQueryBuilder.withQuery(builder -> builder.functionScore(functionScoreQueryBuilder.build()));
         }
-        //排序
+        //Sort
         if(sort==1){
-            //按新品从新到旧
+            //By new arrivals, newest first
             nativeQueryBuilder.withSort(Sort.by(Sort.Order.desc("id")));
         }else if(sort==2){
-            //按销量从高到低
+            //By sales high to low
             nativeQueryBuilder.withSort(Sort.by(Sort.Order.desc("sale")));
         }else if(sort==3){
-            //按价格从低到高
+            //By price low to high
             nativeQueryBuilder.withSort(Sort.by(Sort.Order.asc("price")));
         }else if(sort==4){
-            //按价格从高到低
+            //By price high to low
             nativeQueryBuilder.withSort(Sort.by(Sort.Order.desc("price")));
         }
-        //按相关度
+        //By relevance
         nativeQueryBuilder.withSort(Sort.by(Sort.Order.desc("_score")));
         NativeQuery nativeQuery = nativeQueryBuilder.build();
         LOGGER.info("DSL:{}", nativeQuery.getQuery().toString());
@@ -166,13 +166,13 @@ public class EsProductServiceImpl implements EsProductService {
             String keyword = esProduct.getName();
             Long brandId = esProduct.getBrandId();
             Long productCategoryId = esProduct.getProductCategoryId();
-            //构建查询条件
+            //Build query conditions
             NativeQueryBuilder nativeQueryBuilder = new NativeQueryBuilder();
-            //分页
+            //Paging
             nativeQueryBuilder.withPageable(pageable);
-            //用于过滤掉相同的商品
+            //Used to filter out identical products
             nativeQueryBuilder.withFilter(QueryBuilders.bool(build -> build.mustNot(QueryBuilders.term(b->b.field("id").value(id)))));
-            //根据商品标题、品牌、分类进行搜索
+            //Search by product title, brand and category
             List<FunctionScore> functionScoreList = new ArrayList<>();
             functionScoreList.add(new FunctionScore.Builder()
                     .filter(QueryBuilders.match(builder -> builder.field("name").query(keyword)))
@@ -214,17 +214,17 @@ public class EsProductServiceImpl implements EsProductService {
     @Override
     public EsProductRelatedInfo searchRelatedInfo(String keyword) {
         NativeQueryBuilder nativeQueryBuilder = new NativeQueryBuilder();
-        //搜索条件
+        //Search conditions
         if(StrUtil.isEmpty(keyword)){
             nativeQueryBuilder.withQuery(QueryBuilders.matchAll(builder -> builder));
         }else{
             nativeQueryBuilder.withQuery(QueryBuilders.multiMatch(builder -> builder.fields("name","subTitle","keywords").query(keyword)));
         }
-        //聚合搜索品牌名称
+        //Aggregate search brand names
         nativeQueryBuilder.withAggregation("brandNames",AggregationBuilders.terms(builder -> builder.field("brandName").size(10)));
-        //聚合搜索分类名称
+        //Aggregate search category names
         nativeQueryBuilder.withAggregation("productCategoryNames",AggregationBuilders.terms(builder -> builder.field("productCategoryName").size(10)));
-        //聚合搜索商品属性，去除type=0的属性
+        //Aggregate search product attributes, remove type=0 Attributes of
         Aggregation aggregation = new Aggregation.Builder().nested(builder -> builder.path("attrValueList"))
                 .aggregations("productAttrs",new Aggregation.Builder()
                         .filter(b->b.term(a->a.field("attrValueList.type").value("1")))
@@ -240,12 +240,12 @@ public class EsProductServiceImpl implements EsProductService {
     }
 
     /**
-     * 将返回结果转换为对象
+     * Convert the result into an object
      */
     private EsProductRelatedInfo convertProductRelatedInfo(SearchHits<EsProduct> response) {
         EsProductRelatedInfo productRelatedInfo = new EsProductRelatedInfo();
         Map<String, ElasticsearchAggregation> esAggregationMap = ((ElasticsearchAggregations) response.getAggregations()).aggregationsAsMap();
-        //设置品牌
+        //Set brand
         ElasticsearchAggregation brandNames = esAggregationMap.get("brandNames");
         List<String> brandNameList = new ArrayList<>();
         List<StringTermsBucket> brandNameBuckets = ((StringTermsAggregate) brandNames.aggregation().getAggregate()._get()).buckets().array();
@@ -253,7 +253,7 @@ public class EsProductServiceImpl implements EsProductService {
             brandNameList.add(brandNameBuckets.get(i).key().stringValue());
         }
         productRelatedInfo.setBrandNames(brandNameList);
-        //设置分类
+        //Set category
         ElasticsearchAggregation productCategoryNames = esAggregationMap.get("productCategoryNames");
         List<String> productCategoryNameList = new ArrayList<>();
         List<StringTermsBucket> productCategoryNameBuckets = ((StringTermsAggregate) productCategoryNames.aggregation().getAggregate()._get()).buckets().array();
@@ -261,7 +261,7 @@ public class EsProductServiceImpl implements EsProductService {
             productCategoryNameList.add(productCategoryNameBuckets.get(i).key().stringValue());
         }
         productRelatedInfo.setProductCategoryNames(productCategoryNameList);
-        //设置参数
+        //Set parameters
         ElasticsearchAggregation productAttrs = esAggregationMap.get("allAttrValues");
         List<LongTermsBucket> attrIdBuckets = ((LongTermsAggregate) ((FilterAggregate) ((NestedAggregate) productAttrs.aggregation().getAggregate()._get()).aggregations().get("productAttrs")._get()).aggregations().get("attrIds")._get()).buckets().array();
         List<EsProductRelatedInfo.ProductAttr> attrList = new ArrayList<>();

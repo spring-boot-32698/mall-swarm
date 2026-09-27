@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 首页专题推荐管理Controller
+ * Home topic recommendation management Controller
  * Created by macro on 2018/11/6.
  */
 @Controller
-@Tag(name = "SmsHomeRecommendSubjectController", description = "首页专题推荐管理")
+@Tag(name = "SmsHomeRecommendSubjectController", description = "Home topic recommendation management")
 @RequestMapping("/home/recommendSubject")
 public class SmsHomeRecommendSubjectController {
     @Autowired
     private SmsHomeRecommendSubjectService recommendSubjectService;
 
-    @Operation(summary = "添加首页推荐专题")
+    @Operation(summary = "Add home topic recommendation")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult create(@RequestBody List<SmsHomeRecommendSubject> homeBrandList) {
@@ -35,7 +35,7 @@ public class SmsHomeRecommendSubjectController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "修改推荐排序")
+    @Operation(summary = "Modify recommendation sort")
     @RequestMapping(value = "/update/sort/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updateSort(@PathVariable Long id, Integer sort) {
@@ -46,7 +46,7 @@ public class SmsHomeRecommendSubjectController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "批量删除推荐")
+    @Operation(summary = "Batch delete recommendations")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(@RequestParam("ids") List<Long> ids) {
@@ -57,7 +57,7 @@ public class SmsHomeRecommendSubjectController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "批量修改推荐状态")
+    @Operation(summary = "Batch modify recommendation status")
     @RequestMapping(value = "/update/recommendStatus", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updateRecommendStatus(@RequestParam("ids") List<Long> ids, @RequestParam Integer recommendStatus) {
@@ -68,7 +68,7 @@ public class SmsHomeRecommendSubjectController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "分页查询推荐")
+    @Operation(summary = "Paged query recommendations")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<SmsHomeRecommendSubject>> list(@RequestParam(value = "subjectName", required = false) String subjectName,

@@ -1,10 +1,10 @@
 spring:
   data:
     redis:
-      host: redis # Redis服务器地址
-      database: 0 # Redis数据库索引（默认为0）
-      port: 6379 # Redis服务器连接端口
-      password: #不设置密码
+      host: redis # Redis Server address
+      database: 0 # Redis Database index (default 0)
+      port: 6379 # Redis Server connection port
+      password: #Do not set a password
 logging:
   file:
     path: /var/logs

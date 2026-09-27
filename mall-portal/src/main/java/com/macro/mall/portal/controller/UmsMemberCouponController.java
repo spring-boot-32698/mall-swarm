@@ -20,11 +20,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 会员优惠券管理Controller
+ * Member coupon management Controller
  * Created by macro on 2018/8/29.
  */
 @Controller
-@Tag(name = "UmsMemberCouponController", description = "用户优惠券管理")
+@Tag(name = "UmsMemberCouponController", description = "User coupon management")
 @RequestMapping("/member/coupon")
 public class UmsMemberCouponController {
     @Autowired
@@ -34,16 +34,16 @@ public class UmsMemberCouponController {
     @Autowired
     private UmsMemberService memberService;
 
-    @Operation(summary = "领取指定优惠券")
+    @Operation(summary = "Claim specified coupon")
     @RequestMapping(value = "/add/{couponId}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult add(@PathVariable Long couponId) {
         memberCouponService.add(couponId);
-        return CommonResult.success(null,"领取成功");
+        return CommonResult.success(null,"Claimed successfully");
     }
 
-    @Operation(summary = "获取会员优惠券历史列表")
-    @Parameter(name = "useStatus", description = "优惠券筛选类型:0->未使用；1->已使用；2->已过期",
+    @Operation(summary = "Get member coupon history list")
+    @Parameter(name = "useStatus", description = "Coupon filter type:0->Unused;1->Used;2->Expired",
             in = ParameterIn.QUERY,schema = @Schema(type = "integer",allowableValues = {"0","1","2"}))
     @RequestMapping(value = "/listHistory", method = RequestMethod.GET)
     @ResponseBody
@@ -52,8 +52,8 @@ public class UmsMemberCouponController {
         return CommonResult.success(couponHistoryList);
     }
 
-    @Operation(summary = "获取会员优惠券列表")
-    @Parameter(name = "useStatus", description = "优惠券筛选类型:0->未使用；1->已使用；2->已过期",
+    @Operation(summary = "Get member coupon list")
+    @Parameter(name = "useStatus", description = "Coupon filter type:0->Unused;1->Used;2->Expired",
             in = ParameterIn.QUERY,schema = @Schema(type = "integer",allowableValues = {"0","1","2"}))
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
@@ -62,8 +62,8 @@ public class UmsMemberCouponController {
         return CommonResult.success(couponList);
     }
 
-    @Operation(summary = "获取登录会员购物车的相关优惠券")
-    @Parameter(name = "type", description = "使用可用:0->不可用；1->可用",
+    @Operation(summary = "Get coupons related to the logged-in member’s cart")
+    @Parameter(name = "type", description = "Usable:0->Unavailable;1->Available",
             in = ParameterIn.PATH,schema = @Schema(type = "integer",defaultValue = "1",allowableValues = {"0","1"}))
     @RequestMapping(value = "/list/cart/{type}", method = RequestMethod.GET)
     @ResponseBody
@@ -73,7 +73,7 @@ public class UmsMemberCouponController {
         return CommonResult.success(couponHistoryList);
     }
 
-    @Operation(summary = "获取当前商品相关优惠券")
+    @Operation(summary = "Get coupons related to the current product")
     @RequestMapping(value = "/listByProduct/{productId}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<SmsCoupon>> listByProduct(@PathVariable Long productId) {

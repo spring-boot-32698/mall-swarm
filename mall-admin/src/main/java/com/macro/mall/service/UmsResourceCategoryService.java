@@ -5,28 +5,28 @@ import com.macro.mall.model.UmsResourceCategory;
 import java.util.List;
 
 /**
- * 后台资源分类管理Service
+ * Admin resource category management Service
  * Created by macro on 2020/2/5.
  */
 public interface UmsResourceCategoryService {
 
     /**
-     * 获取所有资源分类
+     * Get all resource categories
      */
     List<UmsResourceCategory> listAll();
 
     /**
-     * 创建资源分类
+     * Create resource category
      */
     int create(UmsResourceCategory umsResourceCategory);
 
     /**
-     * 修改资源分类
+     * Modify resource category
      */
     int update(Long id, UmsResourceCategory umsResourceCategory);
 
     /**
-     * 删除资源分类
+     * Delete resource category
      */
     int delete(Long id);
 }

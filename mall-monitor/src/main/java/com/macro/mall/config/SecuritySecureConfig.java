@@ -23,7 +23,7 @@ import java.util.UUID;
 
 /**
  * @auther macrozheng
- * @description Spring Boot Admin的Security相关配置
+ * @description Spring Boot Admin Security related configuration of
  * @date 2024/1/16
  * @github https://github.com/macrozheng
  */

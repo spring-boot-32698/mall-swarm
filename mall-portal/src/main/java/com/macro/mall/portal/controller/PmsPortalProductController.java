@@ -18,19 +18,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 前台商品管理Controller
+ * Storefront product management Controller
  * Created by macro on 2020/4/6.
  */
 @Controller
-@Tag(name = "PmsPortalProductController", description = "前台商品管理")
+@Tag(name = "PmsPortalProductController", description = "Storefront product management")
 @RequestMapping("/product")
 public class PmsPortalProductController {
 
     @Autowired
     private PmsPortalProductService portalProductService;
 
-    @Operation(summary = "综合搜索、筛选、排序")
-    @Parameter(name = "sort", description = "排序字段:0->按相关度；1->按新品；2->按销量；3->价格从低到高；4->价格从高到低",
+    @Operation(summary = "Combined search, filter, sort")
+    @Parameter(name = "sort", description = "Sort field:0->By relevance;1->By new arrivals;2->By sales;3->Price low to high;4->Price high to low",
             in= ParameterIn.QUERY,schema = @Schema(type = "integer",defaultValue = "0",allowableValues = {"0","1","2","3","4"}))
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     @ResponseBody
@@ -44,7 +44,7 @@ public class PmsPortalProductController {
         return CommonResult.success(CommonPage.restPage(productList));
     }
 
-    @Operation(summary = "以树形结构获取所有商品分类")
+    @Operation(summary = "Get all product categories as a tree structure")
     @RequestMapping(value = "/categoryTreeList", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<PmsProductCategoryNode>> categoryTreeList() {
@@ -52,7 +52,7 @@ public class PmsPortalProductController {
         return CommonResult.success(list);
     }
 
-    @Operation(summary = "获取前台商品详情")
+    @Operation(summary = "Get storefront product details")
     @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<PmsPortalProductDetail> detail(@PathVariable Long id) {

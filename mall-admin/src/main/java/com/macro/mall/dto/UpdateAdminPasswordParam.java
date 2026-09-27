@@ -7,19 +7,19 @@ import lombok.Setter;
 import jakarta.validation.constraints.NotEmpty;
 
 /**
- * 修改用户名密码参数
+ * Modify username/password parameters
  * Created by macro on 2019/10/9.
  */
 @Getter
 @Setter
 public class UpdateAdminPasswordParam {
     @NotEmpty
-    @Schema(title = "用户名", required = true)
+    @Schema(title = "Username", required = true)
     private String username;
     @NotEmpty
-    @Schema(title = "旧密码", required = true)
+    @Schema(title = "Old password", required = true)
     private String oldPassword;
     @NotEmpty
-    @Schema(title = "新密码", required = true)
+    @Schema(title = "New password", required = true)
     private String newPassword;
 }

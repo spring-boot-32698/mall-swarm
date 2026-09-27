@@ -10,31 +10,31 @@ public class PmsProductAttribute implements Serializable {
 
     private String name;
 
-    @Schema(title = "属性选择类型：0->唯一；1->单选；2->多选")
+    @Schema(title = "Attribute selection type:0->Unique;1->Single choice;2->Multiple choice")
     private Integer selectType;
 
-    @Schema(title = "属性录入方式：0->手工录入；1->从列表中选取")
+    @Schema(title = "Attribute input method:0->Manual entry;1->Select from list")
     private Integer inputType;
 
-    @Schema(title = "可选值列表，以逗号隔开")
+    @Schema(title = "Optional value list, separated by commas")
     private String inputList;
 
-    @Schema(title = "排序字段：最高的可以单独上传图片")
+    @Schema(title = "Sort field: the highest one can upload an image separately")
     private Integer sort;
 
-    @Schema(title = "分类筛选样式：1->普通；1->颜色")
+    @Schema(title = "Category filter style:1->Normal;1->Color")
     private Integer filterType;
 
-    @Schema(title = "检索类型；0->不需要进行检索；1->关键字检索；2->范围检索")
+    @Schema(title = "Search type;0->No search needed;1->Keyword search;2->Range search")
     private Integer searchType;
 
-    @Schema(title = "相同属性产品是否关联；0->不关联；1->关联")
+    @Schema(title = "Whether products with the same attribute are associated;0->Not associated;1->Associate")
     private Integer relatedStatus;
 
-    @Schema(title = "是否支持手动新增；0->不支持；1->支持")
+    @Schema(title = "Whether manual addition is supported;0->Not supported;1->Supports")
     private Integer handAddStatus;
 
-    @Schema(title = "属性的类型；0->规格；1->参数")
+    @Schema(title = "Attribute type;0->Specifications;1->Parameters")
     private Integer type;
 
     private static final long serialVersionUID = 1L;

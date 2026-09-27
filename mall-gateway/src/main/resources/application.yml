@@ -15,8 +15,8 @@ spring:
           discovery:
             locator:
               enabled: true
-              lower-case-service-id: true #使用小写service-id
-          routes: #配置路由路径
+              lower-case-service-id: true #Use lowercase service-id
+          routes: #Configure route paths
             - id: mall-auth
               uri: lb://mall-auth
               predicates:
@@ -55,7 +55,7 @@ spring:
       password:
 secure:
   ignore:
-    urls: #配置白名单路径
+    urls: #Configure whitelist paths
       - "/doc.html"
       - "/v3/api-docs/swagger-config"
       - "/*/v3/api-docs/default"
@@ -81,46 +81,46 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*' #暴露Actuator的监控端点
+        include: '*' #Expose Actuator monitoring endpoints
   endpoint:
     health:
-      show-details: always #显示健康的详细信息
+      show-details: always #Show detailed health information
     env:
-      show-values: always #默认Actuator的环境变量会以****显示，这里开启显示
+      show-values: always # Actuator environment variables are masked (****) by default; show real values here
     configprops:
-      show-values: always #默认Actuator的配置属性会以****显示，这里开启显示
+      show-values: always # Actuator configuration properties are masked (****) by default; show real values here
     info:
       access: read-only
 knife4j:
   gateway:
     enabled: true
-    strategy: discover #网关文档聚合方式：服务发现（自动聚合）
+    strategy: discover #Gateway documentation aggregation: service discovery (automatic aggregation)
     discover:
-      version: openapi3 #配置OpenAPI3规范
-      enabled: true #配置开启服务发现
-      excluded-services: mall-monitor #排除监控服务
-    tags-sorter: order #配置tag排序规则
-    operations-sorter: order #配置operation排序规则
+      version: openapi3 #Configure the OpenAPI3 specification
+      enabled: true #Configure enabling service discovery
+      excluded-services: mall-monitor #Exclude the monitoring service
+    tags-sorter: order #Configure tag sort rules
+    operations-sorter: order #Configure operation sort rules
 sa-token:
-  # token名称 (同时也是cookie名称)
+  # token Name (Also the cookie name)
   token-name: Authorization
-  # token有效期，单位秒，-1代表永不过期
+  # token Validity period in seconds, -1 means never expires
   timeout: 2592000
-  # token临时有效期 (指定时间内无操作就视为token过期)，单位秒
+  # token Temporary validity period (Token is considered expired if no operation within the specified time), in seconds
   active-timeout: -1
-  # 是否允许同一账号并发登录 (为false时新登录挤掉旧登录)
+  # Whether the same account may log in concurrently (When false, a new login kicks out the old login)
   is-concurrent: true
-  # 在多人登录同一账号时，是否共用一个token (为false时每次登录新建一个token)
+  # Whether multiple logins on the same account share one token (When false, a new one is created for each login token)
   is-share: false
-  # token风格
+  # token Style
   token-style: uuid
-  # 是否输出操作日志
+  # Whether to output operation logs
   is-log: false
-  # 是否从cookie中读取token
+  # Whether to read from cookie token
   is-read-cookie: false
-  # 是否从head中读取token
+  # Whether to read from header token
   is-read-header: true
-  # token前缀
+  # token Prefix
   token-prefix: Bearer
-  # 是否打印banner
+  # Whether to print banner
   is-print: false

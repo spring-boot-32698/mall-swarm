@@ -11,19 +11,19 @@ public class UmsGrowthChangeHistory implements Serializable {
 
     private Date createTime;
 
-    @Schema(title = "改变类型：0->增加；1->减少")
+    @Schema(title = "Change type:0->Add;1->Decrease")
     private Integer changeType;
 
-    @Schema(title = "积分改变数量")
+    @Schema(title = "Points change amount")
     private Integer changeCount;
 
-    @Schema(title = "操作人员")
+    @Schema(title = "Operator")
     private String operateMan;
 
-    @Schema(title = "操作备注")
+    @Schema(title = "Operation remarks")
     private String operateNote;
 
-    @Schema(title = "积分来源：0->购物；1->管理员修改")
+    @Schema(title = "Points source:0->Shopping;1->Modified by admin")
     private Integer sourceType;
 
     private static final long serialVersionUID = 1L;

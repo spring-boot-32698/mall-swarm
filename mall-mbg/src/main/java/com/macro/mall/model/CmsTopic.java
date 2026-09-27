@@ -17,21 +17,21 @@ public class CmsTopic implements Serializable {
 
     private Date endTime;
 
-    @Schema(title = "参与人数")
+    @Schema(title = "Participants")
     private Integer attendCount;
 
-    @Schema(title = "关注人数")
+    @Schema(title = "Follower count")
     private Integer attentionCount;
 
     private Integer readCount;
 
-    @Schema(title = "奖品名称")
+    @Schema(title = "Prize name")
     private String awardName;
 
-    @Schema(title = "参与方式")
+    @Schema(title = "How to participate")
     private String attendType;
 
-    @Schema(title = "话题内容")
+    @Schema(title = "Topic content")
     private String content;
 
     private static final long serialVersionUID = 1L;

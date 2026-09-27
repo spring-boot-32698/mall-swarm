@@ -15,7 +15,7 @@ public class UmsMemberLoginLog implements Serializable {
 
     private String city;
 
-    @Schema(title = "登录类型：0->PC；1->android;2->ios;3->小程序")
+    @Schema(title = "Login type:0->PC; 1->android;2->ios;3->Mini program")
     private Integer loginType;
 
     private String province;

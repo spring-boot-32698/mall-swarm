@@ -7,12 +7,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 限时购及商品信息封装
+ * Flash sale and product info wrapper
  * Created by macro on 2018/11/16.
  */
 public class SmsFlashPromotionProduct extends SmsFlashPromotionProductRelation{
     @Getter
     @Setter
-    @Schema(title = "关联商品")
+    @Schema(title = "Associated products")
     private PmsProduct product;
 }

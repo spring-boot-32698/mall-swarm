@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 限时购和商品关系管理Controller
+ * Flash sale and product relationship management Controller
  * Created by macro on 2018/11/16.
  */
 @Controller
-@Tag(name = "SmsFlashPromotionProductRelationController", description = "限时购和商品关系管理")
+@Tag(name = "SmsFlashPromotionProductRelationController", description = "Flash sale and product relationship management")
 @RequestMapping("/flashProductRelation")
 public class SmsFlashPromotionProductRelationController {
     @Autowired
     private SmsFlashPromotionProductRelationService relationService;
 
-    @Operation(summary = "批量选择商品添加关联")
+    @Operation(summary = "Batch select products to add associations")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult create(@RequestBody List<SmsFlashPromotionProductRelation> relationList) {
@@ -36,7 +36,7 @@ public class SmsFlashPromotionProductRelationController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "修改关联相关信息")
+    @Operation(summary = "Modify associated information")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long id, @RequestBody SmsFlashPromotionProductRelation relation) {
@@ -47,7 +47,7 @@ public class SmsFlashPromotionProductRelationController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "删除关联")
+    @Operation(summary = "Delete association")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(@PathVariable Long id) {
@@ -58,7 +58,7 @@ public class SmsFlashPromotionProductRelationController {
         return CommonResult.failed();
     }
 
-    @Operation(summary = "获取管理商品促销信息")
+    @Operation(summary = "Get admin-managed product promotion info")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<SmsFlashPromotionProductRelation> getItem(@PathVariable Long id) {
@@ -66,7 +66,7 @@ public class SmsFlashPromotionProductRelationController {
         return CommonResult.success(relation);
     }
 
-    @Operation(summary = "分页查询不同场次关联及商品信息")
+    @Operation(summary = "Query associations and product information for different sessions with paging")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<SmsFlashPromotionProduct>> list(@RequestParam(value = "flashPromotionId") Long flashPromotionId,

@@ -5,22 +5,22 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * 产品查询参数
+ * Product query parameters
  * Created by macro on 2018/4/27.
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class PmsProductQueryParam {
-    @Schema(title = "上架状态")
+    @Schema(title = "Shelf status")
     private Integer publishStatus;
-    @Schema(title = "审核状态")
+    @Schema(title = "Review status")
     private Integer verifyStatus;
-    @Schema(title = "商品名称模糊关键字")
+    @Schema(title = "Product name fuzzy keyword")
     private String keyword;
-    @Schema(title = "商品货号")
+    @Schema(title = "Product item number")
     private String productSn;
-    @Schema(title = "商品分类编号")
+    @Schema(title = "Product category ID")
     private Long productCategoryId;
-    @Schema(title = "商品品牌编号")
+    @Schema(title = "Product brand ID")
     private Long brandId;
 }

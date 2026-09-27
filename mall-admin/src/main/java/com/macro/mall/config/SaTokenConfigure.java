@@ -7,13 +7,13 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @auther macrozheng
- * @description Sa-Token相关配置
+ * @description Sa-Token Related configuration
  * @date 2023/11/28
  * @github https://github.com/macrozheng
  */
 @Configuration
 public class SaTokenConfigure {
-    // Sa-Token 整合 jwt (Simple 简单模式)
+    // Sa-Token Integrate jwt (Simple Simple mode)
     @Bean
     public StpLogic getStpLogicJwt() {
         return new StpLogicJwtForSimple();

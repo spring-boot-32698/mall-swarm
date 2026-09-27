@@ -5,12 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 查询单个产品进行修改时返回的结果
+ * Result returned when querying a single product for modification
  * Created by macro on 2018/4/26.
  */
 public class PmsProductResult extends PmsProductParam {
     @Getter
     @Setter
-    @Schema(title = "商品所选分类的父id")
+    @Schema(title = "Parent of the selected product category id")
     private Long cateParentId;
 }

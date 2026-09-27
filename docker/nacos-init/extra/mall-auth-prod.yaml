@@ -1,0 +1,5 @@
+# mall-auth imports this dataId at start-up; nothing to override in Docker.
+logging:
+  level:
+    root: info
+    com.macro.mall: info

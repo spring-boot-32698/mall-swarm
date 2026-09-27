@@ -7,10 +7,10 @@ import java.math.BigDecimal;
 public class OmsOrderItem implements Serializable {
     private Long id;
 
-    @Schema(title = "订单id")
+    @Schema(title = "Order id")
     private Long orderId;
 
-    @Schema(title = "订单编号")
+    @Schema(title = "Order number")
     private String orderSn;
 
     private Long productId;
@@ -23,41 +23,41 @@ public class OmsOrderItem implements Serializable {
 
     private String productSn;
 
-    @Schema(title = "销售价格")
+    @Schema(title = "Sale price")
     private BigDecimal productPrice;
 
-    @Schema(title = "购买数量")
+    @Schema(title = "Purchase quantity")
     private Integer productQuantity;
 
-    @Schema(title = "商品sku编号")
+    @Schema(title = "Product SKU number")
     private Long productSkuId;
 
-    @Schema(title = "商品sku条码")
+    @Schema(title = "Product SKU barcode")
     private String productSkuCode;
 
-    @Schema(title = "商品分类id")
+    @Schema(title = "Product category id")
     private Long productCategoryId;
 
-    @Schema(title = "商品促销名称")
+    @Schema(title = "Product promotion name")
     private String promotionName;
 
-    @Schema(title = "商品促销分解金额")
+    @Schema(title = "Product promotion breakdown amount")
     private BigDecimal promotionAmount;
 
-    @Schema(title = "优惠券优惠分解金额")
+    @Schema(title = "Coupon discount breakdown amount")
     private BigDecimal couponAmount;
 
-    @Schema(title = "积分优惠分解金额")
+    @Schema(title = "Points discount breakdown amount")
     private BigDecimal integrationAmount;
 
-    @Schema(title = "该商品经过优惠后的分解金额")
+    @Schema(title = "Breakdown amount of this product after discounts")
     private BigDecimal realAmount;
 
     private Integer giftIntegration;
 
     private Integer giftGrowth;
 
-    @Schema(title = "商品销售属性:[{'key':'颜色','value':'颜色'},{'key':'容量','value':'4G'}]")
+    @Schema(title = "Product sales attributes:[{'key':'Color','value':'Color'},{'key':'Capacity','value':'4G'}]")
     private String productAttr;
 
     private static final long serialVersionUID = 1L;

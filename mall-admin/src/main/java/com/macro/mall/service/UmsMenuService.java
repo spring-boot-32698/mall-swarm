@@ -6,42 +6,42 @@ import com.macro.mall.model.UmsMenu;
 import java.util.List;
 
 /**
- * 后台菜单管理Service
+ * Admin menu management Service
  * Created by macro on 2020/2/2.
  */
 public interface UmsMenuService {
     /**
-     * 创建后台菜单
+     * Create admin menu
      */
     int create(UmsMenu umsMenu);
 
     /**
-     * 修改后台菜单
+     * Modify admin menu
      */
     int update(Long id, UmsMenu umsMenu);
 
     /**
-     * 根据ID获取菜单详情
+     * Get menu details by ID
      */
     UmsMenu getItem(Long id);
 
     /**
-     * 根据ID删除菜单
+     * Delete menu by ID
      */
     int delete(Long id);
 
     /**
-     * 分页查询后台菜单
+     * Query admin menus with paging
      */
     List<UmsMenu> list(Long parentId, Integer pageSize, Integer pageNum);
 
     /**
-     * 树形结构返回所有菜单列表
+     * Return all menus as a tree structure
      */
     List<UmsMenuNode> treeList();
 
     /**
-     * 修改菜单显示状态
+     * Modify menu display status
      */
     int updateHidden(Long id, Integer hidden);
 }

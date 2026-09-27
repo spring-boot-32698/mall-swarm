@@ -6,18 +6,18 @@ import java.math.BigDecimal;
 
 /**
  * Created by macro on 2018/8/27.
- * 购物车中促销信息的封装
+ * Wrapper for promotion info in the cart
  */
 public class CartPromotionItem extends OmsCartItem{
-    //促销活动信息
+    //Promotion activity information
     private String promotionMessage;
-    //促销活动减去的金额，针对每个商品
+    //Amount reduced by promotion, per product
     private BigDecimal reduceAmount;
-    //商品的真实库存（剩余库存-锁定库存）
+    //Product real stock (remaining stock - locked stock)
     private Integer realStock;
-    //购买商品赠送积分
+    //Points awarded for purchasing products
     private Integer integration;
-    //购买商品赠送成长值
+    //Growth value awarded for purchasing products
     private Integer growth;
     public String getPromotionMessage() {
         return promotionMessage;

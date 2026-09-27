@@ -6,16 +6,16 @@ import java.io.Serializable;
 public class UmsIntegrationConsumeSetting implements Serializable {
     private Long id;
 
-    @Schema(title = "每一元需要抵扣的积分数量")
+    @Schema(title = "Points needed to deduct each yuan")
     private Integer deductionPerAmount;
 
-    @Schema(title = "每笔订单最高抵用百分比")
+    @Schema(title = "Maximum deduction percentage per order")
     private Integer maxPercentPerOrder;
 
-    @Schema(title = "每次使用积分最小单位100")
+    @Schema(title = "Minimum unit of points per use 100")
     private Integer useUnit;
 
-    @Schema(title = "是否可以和优惠券同用；0->不可以；1->可以")
+    @Schema(title = "Whether it can be combined with coupons;0->Not allowed;1->Allowed")
     private Integer couponStatus;
 
     private static final long serialVersionUID = 1L;

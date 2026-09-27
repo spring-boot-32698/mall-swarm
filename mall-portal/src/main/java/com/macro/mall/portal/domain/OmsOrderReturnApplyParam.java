@@ -7,43 +7,43 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 /**
- * 申请退货参数
+ * Return application parameters
  * Created by macro on 2018/10/17.
  */
 @Getter
 @Setter
 public class OmsOrderReturnApplyParam {
-    @Schema(title = "订单id")
+    @Schema(title = "Order id")
     private Long orderId;
-    @Schema(title = "退货商品id")
+    @Schema(title = "Returned product id")
     private Long productId;
-    @Schema(title = "订单编号")
+    @Schema(title = "Order number")
     private String orderSn;
-    @Schema(title = "会员用户名")
+    @Schema(title = "Member username")
     private String memberUsername;
-    @Schema(title = "退货人姓名")
+    @Schema(title = "Returner name")
     private String returnName;
-    @Schema(title = "退货人电话")
+    @Schema(title = "Returner phone")
     private String returnPhone;
-    @Schema(title = "商品图片")
+    @Schema(title = "Product image")
     private String productPic;
-    @Schema(title = "商品名称")
+    @Schema(title = "Product name")
     private String productName;
-    @Schema(title = "商品品牌")
+    @Schema(title = "Product brand")
     private String productBrand;
-    @Schema(title = "商品销售属性：颜色：红色；尺码：xl;")
+    @Schema(title = "Product sales attributes: Color: Red; Size:xl;")
     private String productAttr;
-    @Schema(title = "退货数量")
+    @Schema(title = "Return quantity")
     private Integer productCount;
-    @Schema(title = "商品单价")
+    @Schema(title = "Product unit price")
     private BigDecimal productPrice;
-    @Schema(title = "商品实际支付单价")
+    @Schema(title = "Product actual paid unit price")
     private BigDecimal productRealPrice;
-    @Schema(title = "原因")
+    @Schema(title = "Reason")
     private String reason;
-    @Schema(title = "描述")
+    @Schema(title = "Description")
     private String description;
-    @Schema(title = "凭证图片，以逗号隔开")
+    @Schema(title = "Proof images, separated by commas")
     private String proofPics;
 
 }

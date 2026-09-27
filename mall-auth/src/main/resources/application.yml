@@ -12,29 +12,29 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*' #暴露Actuator的监控端点
+        include: '*' #Expose Actuator monitoring endpoints
   endpoint:
     health:
-      show-details: always #显示健康的详细信息
+      show-details: always #Show detailed health information
     env:
-      show-values: always #默认Actuator的环境变量会以****显示，这里开启显示
+      show-values: always # Actuator environment variables are masked (****) by default; show real values here
     configprops:
-      show-values: always #默认Actuator的配置属性会以****显示，这里开启显示
+      show-values: always # Actuator configuration properties are masked (****) by default; show real values here
     info:
       access: read-only
 springdoc:
   swagger-ui:
-    # 修改Swagger UI路径
+    # Modify Swagger UI path
     path: /swagger-ui.html
-    # 开启Swagger UI界面
+    # Enable Swagger UI
     enabled: true
     tags-sorter: alpha
     operations-sorter: alpha
     show-extensions: true
   api-docs:
-    # 修改api-docs路径
+    # Modify api-docs path
     path: /v3/api-docs
-    # 开启api-docs
+    # Enable api-docs
     enabled: true
   group-configs:
     - group: 'default'

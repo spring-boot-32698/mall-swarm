@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @auther macrozheng
- * @description 权限框架中使用的用户信息封装类
+ * @description User information wrapper class used in the permission framework
  * @date 2024/1/30
  * @github https://github.com/macrozheng
  */

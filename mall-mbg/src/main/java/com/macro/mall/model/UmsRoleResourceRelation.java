@@ -6,10 +6,10 @@ import java.io.Serializable;
 public class UmsRoleResourceRelation implements Serializable {
     private Long id;
 
-    @Schema(title = "角色ID")
+    @Schema(title = "Role ID")
     private Long roleId;
 
-    @Schema(title = "资源ID")
+    @Schema(title = "Resource ID")
     private Long resourceId;
 
     private static final long serialVersionUID = 1L;

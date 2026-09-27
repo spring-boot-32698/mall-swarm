@@ -15,18 +15,18 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 后台资源管理Controller
+ * Admin resource management Controller
  * Created by macro on 2020/2/4.
  */
 @Controller
-@Tag(name = "UmsResourceController", description = "后台资源管理")
+@Tag(name = "UmsResourceController", description = "Admin resource management")
 @RequestMapping("/resource")
 public class UmsResourceController {
 
     @Autowired
     private UmsResourceService resourceService;
 
-    @Operation(summary = "添加后台资源")
+    @Operation(summary = "Add admin resource")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult create(@RequestBody UmsResource umsResource) {
@@ -38,7 +38,7 @@ public class UmsResourceController {
         }
     }
 
-    @Operation(summary = "修改后台资源")
+    @Operation(summary = "Modify admin resource")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long id,
@@ -51,7 +51,7 @@ public class UmsResourceController {
         }
     }
 
-    @Operation(summary = "根据ID获取资源详情")
+    @Operation(summary = "Get resource details by ID")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<UmsResource> getItem(@PathVariable Long id) {
@@ -59,7 +59,7 @@ public class UmsResourceController {
         return CommonResult.success(umsResource);
     }
 
-    @Operation(summary = "根据ID删除后台资源")
+    @Operation(summary = "Delete admin resource by ID")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(@PathVariable Long id) {
@@ -71,7 +71,7 @@ public class UmsResourceController {
         }
     }
 
-    @Operation(summary = "分页模糊查询后台资源")
+    @Operation(summary = "Fuzzy query admin resources with paging")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<UmsResource>> list(@RequestParam(required = false) Long categoryId,
@@ -83,7 +83,7 @@ public class UmsResourceController {
         return CommonResult.success(CommonPage.restPage(resourceList));
     }
 
-    @Operation(summary = "查询所有后台资源")
+    @Operation(summary = "Query all admin resources")
     @RequestMapping(value = "/listAll", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<UmsResource>> listAll() {
@@ -91,7 +91,7 @@ public class UmsResourceController {
         return CommonResult.success(resourceList);
     }
 
-    @Operation(summary = "初始化路径和资源的关联数据")
+    @Operation(summary = "Initialize association data between paths and resources")
     @RequestMapping(value = "/initPathResourceMap", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult initPathResourceMap() {

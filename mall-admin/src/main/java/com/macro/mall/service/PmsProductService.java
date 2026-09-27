@@ -11,63 +11,63 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * 商品管理Service
+ * Product management Service
  * Created by macro on 2018/4/26.
  */
 public interface PmsProductService {
     /**
-     * 创建商品
+     * Create product
      */
     @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED)
     int create(PmsProductParam productParam);
 
     /**
-     * 根据商品编号获取更新信息
+     * Get update info by product number
      */
     PmsProductResult getUpdateInfo(Long id);
 
     /**
-     * 更新商品
+     * Update product
      */
     @Transactional
     int update(Long id, PmsProductParam productParam);
 
     /**
-     * 分页查询商品
+     * Query products with paging
      */
     List<PmsProduct> list(PmsProductQueryParam productQueryParam, Integer pageSize, Integer pageNum);
 
     /**
-     * 批量修改审核状态
-     * @param ids 产品id
-     * @param verifyStatus 审核状态
-     * @param detail 审核详情
+     * Batch modify review status
+     * @param ids Product id
+     * @param verifyStatus Review status
+     * @param detail Review details
      */
     @Transactional
     int updateVerifyStatus(List<Long> ids, Integer verifyStatus, String detail);
 
     /**
-     * 批量修改商品上架状态
+     * Batch modify product shelf status
      */
     int updatePublishStatus(List<Long> ids, Integer publishStatus);
 
     /**
-     * 批量修改商品推荐状态
+     * Batch modify product recommendation status
      */
     int updateRecommendStatus(List<Long> ids, Integer recommendStatus);
 
     /**
-     * 批量修改新品状态
+     * Batch modify new arrival status
      */
     int updateNewStatus(List<Long> ids, Integer newStatus);
 
     /**
-     * 批量删除商品
+     * Batch delete products
      */
     int updateDeleteStatus(List<Long> ids, Integer deleteStatus);
 
     /**
-     * 根据商品名称或者货号模糊查询
+     * Fuzzy query by product name or item number
      */
     List<PmsProduct> list(String keyword);
 }

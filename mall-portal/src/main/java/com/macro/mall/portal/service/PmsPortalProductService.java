@@ -7,22 +7,22 @@ import com.macro.mall.portal.domain.PmsProductCategoryNode;
 import java.util.List;
 
 /**
- * 前台商品管理Service
+ * Storefront product management Service
  * Created by macro on 2020/4/6.
  */
 public interface PmsPortalProductService {
     /**
-     * 综合搜索商品
+     * Comprehensive product search
      */
     List<PmsProduct> search(String keyword, Long brandId, Long productCategoryId, Integer pageNum, Integer pageSize, Integer sort);
 
     /**
-     * 以树形结构获取所有商品分类
+     * Get all product categories as a tree structure
      */
     List<PmsProductCategoryNode> categoryTreeList();
 
     /**
-     * 获取前台商品详情
+     * Get storefront product details
      */
     PmsPortalProductDetail detail(Long id);
 }

@@ -6,16 +6,16 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * 用户登录参数
+ * User login parameters
  * Created by macro on 2018/4/26.
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class UmsAdminLoginParam {
     @NotEmpty
-    @Schema(title = "用户名", required = true)
+    @Schema(title = "Username", required = true)
     private String username;
     @NotEmpty
-    @Schema(title = "密码", required = true)
+    @Schema(title = "Password", required = true)
     private String password;
 }

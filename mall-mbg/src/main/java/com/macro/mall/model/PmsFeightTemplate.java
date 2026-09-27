@@ -9,20 +9,20 @@ public class PmsFeightTemplate implements Serializable {
 
     private String name;
 
-    @Schema(title = "计费类型:0->按重量；1->按件数")
+    @Schema(title = "Billing type:0->By weight;1->By quantity")
     private Integer chargeType;
 
-    @Schema(title = "首重kg")
+    @Schema(title = "First weight kg")
     private BigDecimal firstWeight;
 
-    @Schema(title = "首费（元）")
+    @Schema(title = "First-weight fee (yuan)")
     private BigDecimal firstFee;
 
     private BigDecimal continueWeight;
 
     private BigDecimal continmeFee;
 
-    @Schema(title = "目的地（省、市）")
+    @Schema(title = "Destination (province, city)")
     private String dest;
 
     private static final long serialVersionUID = 1L;

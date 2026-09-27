@@ -6,29 +6,29 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
 /**
- * 品牌传递参数
+ * Brand parameters passed
  */
 public class PmsBrandDto {
-    @Schema(title = "品牌名称",required = true)
-    @NotNull(message = "名称不能为空")
+    @Schema(title = "Brand name",required = true)
+    @NotNull(message = "Name cannot be empty")
     private String name;
-    @Schema(title = "品牌首字母",required = true)
-    @NotNull(message = "首字母不能为空")
+    @Schema(title = "Brand initial letter",required = true)
+    @NotNull(message = "Initial letter cannot be empty")
     private String firstLetter;
-    @Schema(title = "排序字段")
-    @Min(value = 0, message = "排序最小为0")
+    @Schema(title = "Sort field")
+    @Min(value = 0, message = "Minimum sort is 0")
     private Integer sort;
-    @Schema(title = "是否为厂家制造商")
-    @FlagValidator(value = {"0","1"}, message = "厂家状态不正确")
+    @Schema(title = "Whether it is a manufacturer")
+    @FlagValidator(value = {"0","1"}, message = "Manufacturer status is incorrect")
     private Integer factoryStatus;
-    @Schema(title = "是否进行显示")
-    @FlagValidator(value = {"0","1"}, message = "显示状态不正确")
+    @Schema(title = "Whether to show")
+    @FlagValidator(value = {"0","1"}, message = "Display status is incorrect")
     private Integer showStatus;
-    @Schema(title = "品牌logo")
+    @Schema(title = "Brand logo")
     private String logo;
-    @Schema(title = "品牌大图")
+    @Schema(title = "Brand large image")
     private String bigPic;
-    @Schema(title = "品牌故事")
+    @Schema(title = "Brand story")
     private String brandStory;
 
     public String getName() {

@@ -11,7 +11,7 @@ public class PmsMemberPrice implements Serializable {
 
     private Long memberLevelId;
 
-    @Schema(title = "会员价格")
+    @Schema(title = "Member price")
     private BigDecimal memberPrice;
 
     private String memberLevelName;

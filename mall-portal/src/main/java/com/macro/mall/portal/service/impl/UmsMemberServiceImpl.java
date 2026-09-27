@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * 会员管理Service实现类
+ * Member management Service implementation class
  * Created by macro on 2018/8/3.
  */
 @Service
@@ -63,26 +63,26 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 
     @Override
     public void register(String username, String password, String telephone, String authCode) {
-        //验证验证码
+        //Verify verification code
         if(!verifyAuthCode(authCode,telephone)){
-            Asserts.fail("验证码错误");
+            Asserts.fail("Verification code error");
         }
-        //查询是否已有该用户
+        //Query whether the user already exists
         UmsMemberExample example = new UmsMemberExample();
         example.createCriteria().andUsernameEqualTo(username);
         example.or(example.createCriteria().andPhoneEqualTo(telephone));
         List<UmsMember> umsMembers = memberMapper.selectByExample(example);
         if (!CollectionUtils.isEmpty(umsMembers)) {
-            Asserts.fail("该用户已经存在");
+            Asserts.fail("This user already exists");
         }
-        //没有该用户进行添加操作
+        //Add operation when the user does not exist
         UmsMember umsMember = new UmsMember();
         umsMember.setUsername(username);
         umsMember.setPhone(telephone);
         umsMember.setPassword(BCrypt.hashpw(password));
         umsMember.setCreateTime(new Date());
         umsMember.setStatus(1);
-        //获取默认会员等级并设置
+        //Get the default member level and set it
         UmsMemberLevelExample levelExample = new UmsMemberLevelExample();
         levelExample.createCriteria().andDefaultStatusEqualTo(1);
         List<UmsMemberLevel> memberLevelList = memberLevelMapper.selectByExample(levelExample);
@@ -110,11 +110,11 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         example.createCriteria().andPhoneEqualTo(telephone);
         List<UmsMember> memberList = memberMapper.selectByExample(example);
         if(CollectionUtils.isEmpty(memberList)){
-            Asserts.fail("该账号不存在");
+            Asserts.fail("This account does not exist");
         }
-        //验证验证码
+        //Verify verification code
         if(!verifyAuthCode(authCode,telephone)){
-            Asserts.fail("验证码错误");
+            Asserts.fail("Verification code error");
         }
         UmsMember umsMember = memberList.get(0);
         umsMember.setPassword(BCrypt.hashpw(password));
@@ -147,40 +147,40 @@ public class UmsMemberServiceImpl implements UmsMemberService {
     @Override
     public SaTokenInfo login(String username, String password) {
         if(StrUtil.isEmpty(username)||StrUtil.isEmpty(password)){
-            Asserts.fail("用户名或密码不能为空！");
+            Asserts.fail("Username or password cannot be empty!");
         }
         UmsMember member = getByUsername(username);
         if(member==null){
-            Asserts.fail("找不到该用户！");
+            Asserts.fail("User not found!");
         }
         if (!BCrypt.checkpw(password, member.getPassword())) {
-            Asserts.fail("密码不正确！");
+            Asserts.fail("Incorrect password!");
         }
         if(member.getStatus()!=1){
-            Asserts.fail("该账号已被禁用！");
+            Asserts.fail("This account has been disabled!");
         }
-        // 登录校验成功后，一行代码实现登录
+        // After login verification succeeds, log in with one line of code
         StpMemberUtil.login(member.getId());
         UserDto userDto = new UserDto();
         userDto.setId(member.getId());
         userDto.setUsername(member.getUsername());
         userDto.setClientId(AuthConstant.PORTAL_CLIENT_ID);
-        // 将用户信息存储到Session中
+        // Store user information in the Session
         StpMemberUtil.getSession().set(AuthConstant.STP_MEMBER_INFO,userDto);
-        // 获取当前登录用户Token信息
+        // Get the current logged-in user’s Token info
         return StpMemberUtil.getTokenInfo();
     }
 
     @Override
     public void logout() {
-        //先清空缓存
+        //Clear the cache first
         UserDto userDto = (UserDto) StpMemberUtil.getSession().get(AuthConstant.STP_MEMBER_INFO);
         memberCacheService.delMember(userDto.getId());
-        //再调用sa-token的登出方法
+        //Then call the sa-token logout method
         StpMemberUtil.logout();
     }
 
-    //对输入的验证码进行校验
+    //Validate the entered verification code
     private boolean verifyAuthCode(String authCode, String telephone){
         if(StringUtils.isEmpty(authCode)){
             return false;

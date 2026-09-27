@@ -13,12 +13,12 @@ spring:
     username: root
     password: root
     druid:
-      initial-size: 5 #连接池初始化大小
-      min-idle: 10 #最小空闲连接数
-      max-active: 20 #最大连接数
+      initial-size: 5 #Connection pool initial size
+      min-idle: 10 #Minimum idle connections
+      max-active: 20 #Maximum connections
       web-stat-filter:
-        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
-      stat-view-servlet: #访问监控网页的登录用户名和密码
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #Do not count these request data
+      stat-view-servlet: #Login username and password for accessing the monitoring web page
         login-username: druid
         login-password: druid
   data:
@@ -35,31 +35,31 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*' #暴露Actuator的监控端点
+        include: '*' #Expose Actuator monitoring endpoints
   health:
     elasticsearch:
       enabled: false
   endpoint:
     health:
-      show-details: always #显示健康的详细信息
+      show-details: always #Show detailed health information
     env:
-      show-values: always #默认Actuator的环境变量会以****显示，这里开启显示
+      show-values: always # Actuator environment variables are masked (****) by default; show real values here
     configprops:
-      show-values: always #默认Actuator的配置属性会以****显示，这里开启显示
+      show-values: always # Actuator configuration properties are masked (****) by default; show real values here
     info:
       access: read-only
 springdoc:
   swagger-ui:
-    # 修改Swagger UI路径
+    # Modify Swagger UI path
     path: /swagger-ui.html
-    # 开启Swagger UI界面
+    # Enable Swagger UI
     enabled: true
-    # 用于配置tag和operation的展开方式，这里配置为都不展开
+    # Configures how tags and operations are expanded; here neither is expanded
     doc-expansion: 'none'
   api-docs:
-    # 修改api-docs路径
+    # Modify api-docs path
     path: /v3/api-docs
-    # 开启api-docs
+    # Enable api-docs
     enabled: true
   group-configs:
     - group: 'mall-search'

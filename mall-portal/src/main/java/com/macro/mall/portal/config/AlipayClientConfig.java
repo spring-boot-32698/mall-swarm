@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @auther macrozheng
- * @description 支付宝请求客户端配置
+ * @description Alipay request client configuration
  * @date 2023/9/8
  * @github https://github.com/macrozheng
  */

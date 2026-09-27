@@ -13,6 +13,6 @@ import java.util.List;
 public class PmsProductCategoryWithChildrenItem extends PmsProductCategory {
     @Getter
     @Setter
-    @Schema(title = "子级分类")
+    @Schema(title = "Child categories")
     private List<PmsProductCategory> children;
 }

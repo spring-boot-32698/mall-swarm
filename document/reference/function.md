@@ -1,27 +1,27 @@
-# mall功能结构说明
+# mall Feature structure description
 
-## 后台管理系统
+## Admin management system
 
-### 商品管理
+### Product management
 
-![功能结构图-商品.jpg](https://github.com/macrozheng/mall/blob/master/document/resource/mind_product.jpg)
+![Feature structure diagram - Product.jpg](https://github.com/macrozheng/mall/blob/master/document/resource/mind_product.jpg)
 
-### 订单管理
+### Order management
 
-![功能结构图-订单.jpg](https://github.com/macrozheng/mall/blob/master/document/resource/mind_order.jpg)
+![Feature structure diagram - Order.jpg](https://github.com/macrozheng/mall/blob/master/document/resource/mind_order.jpg)
 
-### 促销管理
+### Promotion management
 
-![功能结构图-促销.jpg](https://github.com/macrozheng/mall/blob/master/document/resource/mind_sale.jpg)
+![Feature structure diagram - Promotion.jpg](https://github.com/macrozheng/mall/blob/master/document/resource/mind_sale.jpg)
 
-### 内容管理
+### Content management
 
-![功能结构图-内容.jpg](https://github.com/macrozheng/mall/blob/master/document/resource/mind_content.jpg)
+![Feature structure diagram - Content.jpg](https://github.com/macrozheng/mall/blob/master/document/resource/mind_content.jpg)
 
-### 用户管理
+### User management
 
-![功能结构图-用户.jpg](https://github.com/macrozheng/mall/blob/master/document/resource/mind_member.jpg)
+![Feature structure diagram - User.jpg](https://github.com/macrozheng/mall/blob/master/document/resource/mind_member.jpg)
 
-## 前台商城系统 
+## Storefront mall system 
 
-![功能结构图-前台.jpg](https://github.com/macrozheng/mall/blob/master/document/resource/mind_portal.jpg)
+![Feature structure diagram - Storefront.jpg](https://github.com/macrozheng/mall/blob/master/document/resource/mind_portal.jpg)

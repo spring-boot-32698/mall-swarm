@@ -1,0 +1,10 @@
+<settings>
+  <!-- Resolve everything from Maven Central instead of the mirrors declared in pom.xml -->
+  <mirrors>
+    <mirror>
+      <id>central-mirror</id>
+      <mirrorOf>*</mirrorOf>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </mirror>
+  </mirrors>
+</settings>

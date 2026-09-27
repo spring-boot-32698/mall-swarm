@@ -21,12 +21,12 @@ import java.util.Map;
 
 /**
  * @auther macrozheng
- * @description 支付宝支付Controller
+ * @description Alipay payment Controller
  * @date 2023/9/8
  * @github https://github.com/macrozheng
  */
 @Controller
-@Tag(name = "AlipayController", description = "支付宝支付相关接口")
+@Tag(name = "AlipayController", description = "Alipay payment related APIs")
 @RequestMapping("/alipay")
 public class AlipayController {
 
@@ -35,7 +35,7 @@ public class AlipayController {
     @Autowired
     private AlipayService alipayService;
 
-    @Operation(summary = "支付宝电脑网站支付")
+    @Operation(summary = "Alipay desktop website payment")
     @RequestMapping(value = "/pay", method = RequestMethod.GET)
     public void pay(AliPayParam aliPayParam, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=" + alipayConfig.getCharset());
@@ -44,7 +44,7 @@ public class AlipayController {
         response.getWriter().close();
     }
 
-    @Operation(summary = "支付宝手机网站支付")
+    @Operation(summary = "Alipay mobile website payment")
     @RequestMapping(value = "/webPay", method = RequestMethod.GET)
     public void webPay(AliPayParam aliPayParam, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=" + alipayConfig.getCharset());
@@ -53,7 +53,7 @@ public class AlipayController {
         response.getWriter().close();
     }
 
-    @Operation(summary = "支付宝异步回调",description = "必须为POST请求，执行成功返回success，执行失败返回failure")
+    @Operation(summary = "Alipay asynchronous callback",description = "Must be a POST request; return success on successful execution, and return failure otherwise failure")
     @RequestMapping(value = "/notify", method = RequestMethod.POST)
     public String notify(HttpServletRequest request){
         Map<String, String> params = new HashMap<>();
@@ -64,7 +64,7 @@ public class AlipayController {
         return alipayService.notify(params);
     }
 
-    @Operation(summary = "支付宝统一收单线下交易查询",description = "订单支付成功返回交易状态：TRADE_SUCCESS")
+    @Operation(summary = "Alipay unified acquiring offline transaction query",description = "Transaction status returned when order payment succeeds:TRADE_SUCCESS")
     @RequestMapping(value = "/query", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<String> query(String outTradeNo, String tradeNo){

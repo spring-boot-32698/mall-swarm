@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
- * UmsAdminCacheService实现类
+ * UmsAdminCacheService Implementation class
  * Created by macro on 2020/3/13.
  */
 @Service

@@ -22,7 +22,7 @@ import java.util.Map;
 
 /**
  * @auther macrozheng
- * @description 支付宝支付Service实现类
+ * @description Alipay payment Service implementation class
  * @date 2023/9/8
  * @github https://github.com/macrozheng
  */
@@ -41,22 +41,22 @@ public class AlipayServiceImpl implements AlipayService {
     public String pay(AliPayParam aliPayParam) {
         AlipayTradePagePayRequest request = new AlipayTradePagePayRequest();
         if(StrUtil.isNotEmpty(alipayConfig.getNotifyUrl())){
-            //异步接收地址，公网可访问
+            //Asynchronous receiving URL, publicly accessible
             request.setNotifyUrl(alipayConfig.getNotifyUrl());
         }
         if(StrUtil.isNotEmpty(alipayConfig.getReturnUrl())){
-            //同步跳转地址
+            //Synchronous redirect URL
             request.setReturnUrl(alipayConfig.getReturnUrl());
         }
-        //******必传参数******
+        //******Required parameter******
         JSONObject bizContent = new JSONObject();
-        //商户订单号，商家自定义，保持唯一性
+        //Merchant order number, customized by the merchant, must be unique
         bizContent.put("out_trade_no", aliPayParam.getOutTradeNo());
-        //支付金额，最小值0.01元
+        //Payment amount, minimum 0.01 yuan
         bizContent.put("total_amount", aliPayParam.getTotalAmount());
-        //订单标题，不可使用特殊符号
+        //Order title, special symbols not allowed
         bizContent.put("subject", aliPayParam.getSubject());
-        //电脑网站支付场景固定传值FAST_INSTANT_TRADE_PAY
+        //Fixed values for the desktop website payment scenario FAST_INSTANT_TRADE_PAY
         bizContent.put("product_code", "FAST_INSTANT_TRADE_PAY");
         request.setBizContent(bizContent.toString());
         String formHtml = null;
@@ -73,24 +73,24 @@ public class AlipayServiceImpl implements AlipayService {
         String result = "failure";
         boolean signVerified = false;
         try {
-            //调用SDK验证签名
+            //Call the SDK to verify the signature
             signVerified = AlipaySignature.rsaCheckV1(params, alipayConfig.getAlipayPublicKey(), alipayConfig.getCharset(), alipayConfig.getSignType());
         } catch (AlipayApiException e) {
-            log.error("支付回调签名校验异常！",e);
+            log.error("Payment callback signature verification error!",e);
             e.printStackTrace();
         }
         if (signVerified) {
             String tradeStatus = params.get("trade_status");
             if("TRADE_SUCCESS".equals(tradeStatus)){
                 result = "success";
-                log.info("notify方法被调用了，tradeStatus:{}",tradeStatus);
+                log.info("notify Method was called,tradeStatus:{}",tradeStatus);
                 String outTradeNo = params.get("out_trade_no");
                 portalOrderService.paySuccessByOrderSn(outTradeNo,1);
             }else{
-                log.warn("订单未支付成功，trade_status:{}",tradeStatus);
+                log.warn("Order payment not successful,trade_status:{}",tradeStatus);
             }
         } else {
-            log.warn("支付回调签名校验失败！");
+            log.warn("Payment callback signature verification failed!");
         }
         return result;
     }
@@ -98,16 +98,16 @@ public class AlipayServiceImpl implements AlipayService {
     @Override
     public String query(String outTradeNo, String tradeNo) {
         AlipayTradeQueryRequest request = new AlipayTradeQueryRequest();
-        //******必传参数******
+        //******Required parameter******
         JSONObject bizContent = new JSONObject();
-        //设置查询参数，out_trade_no和trade_no至少传一个
+        //Set query parameters; at least one of out_trade_no and trade_no must be passed
         if(StrUtil.isNotEmpty(outTradeNo)){
             bizContent.put("out_trade_no",outTradeNo);
         }
         if(StrUtil.isNotEmpty(tradeNo)){
             bizContent.put("trade_no",tradeNo);
         }
-        //交易结算信息: trade_settle_info
+        //Transaction settlement info: trade_settle_info
         String[] queryOptions = {"trade_settle_info"};
         bizContent.put("query_options", queryOptions);
         request.setBizContent(bizContent.toString());
@@ -115,17 +115,17 @@ public class AlipayServiceImpl implements AlipayService {
         try {
             response = alipayClient.execute(request);
         } catch (AlipayApiException e) {
-            log.error("查询支付宝账单异常！",e);
+            log.error("Error querying Alipay bill!",e);
         }
         if(response.isSuccess()){
-            log.info("查询支付宝账单成功！");
+            log.info("Alipay bill queried successfully!");
             if("TRADE_SUCCESS".equals(response.getTradeStatus())){
                 portalOrderService.paySuccessByOrderSn(outTradeNo,1);
             }
         } else {
-            log.error("查询支付宝账单失败！");
+            log.error("Failed to query Alipay bill!");
         }
-        //交易状态：WAIT_BUYER_PAY（交易创建，等待买家付款）、TRADE_CLOSED（未付款交易超时关闭，或支付完成后全额退款）、TRADE_SUCCESS（交易支付成功）、TRADE_FINISHED（交易结束，不可退款）
+        //Transaction status: WAIT_BUYER_PAY (transaction created, awaiting buyer payment), TRADE_CLOSED (unpaid transaction closed on timeout, or fully refunded after payment), TRADE_SUCCESS (transaction paid successfully), TRADE_FINISHED (transaction finished, no refunds possible)
         return response.getTradeStatus();
     }
 
@@ -133,22 +133,22 @@ public class AlipayServiceImpl implements AlipayService {
     public String webPay(AliPayParam aliPayParam) {
         AlipayTradeWapPayRequest request = new AlipayTradeWapPayRequest ();
         if(StrUtil.isNotEmpty(alipayConfig.getNotifyUrl())){
-            //异步接收地址，公网可访问
+            //Asynchronous receiving URL, publicly accessible
             request.setNotifyUrl(alipayConfig.getNotifyUrl());
         }
         if(StrUtil.isNotEmpty(alipayConfig.getReturnUrl())){
-            //同步跳转地址
+            //Synchronous redirect URL
             request.setReturnUrl(alipayConfig.getReturnUrl());
         }
-        //******必传参数******
+        //******Required parameter******
         JSONObject bizContent = new JSONObject();
-        //商户订单号，商家自定义，保持唯一性
+        //Merchant order number, customized by the merchant, must be unique
         bizContent.put("out_trade_no", aliPayParam.getOutTradeNo());
-        //支付金额，最小值0.01元
+        //Payment amount, minimum 0.01 yuan
         bizContent.put("total_amount", aliPayParam.getTotalAmount());
-        //订单标题，不可使用特殊符号
+        //Order title, special symbols not allowed
         bizContent.put("subject", aliPayParam.getSubject());
-        //手机网站支付默认传值FAST_INSTANT_TRADE_PAY
+        //Default values passed for mobile website payment FAST_INSTANT_TRADE_PAY
         bizContent.put("product_code", "QUICK_WAP_WAY");
         request.setBizContent(bizContent.toString());
         String formHtml = null;

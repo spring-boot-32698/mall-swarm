@@ -6,33 +6,33 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * 首页新品管理Service
+ * Home new arrival management Service
  * Created by macro on 2018/11/6.
  */
 public interface SmsHomeNewProductService {
     /**
-     * 添加首页推荐
+     * Add home recommendation
      */
     @Transactional
     int create(List<SmsHomeNewProduct> homeNewProductList);
 
     /**
-     * 修改推荐排序
+     * Modify recommendation sort
      */
     int updateSort(Long id, Integer sort);
 
     /**
-     * 批量删除推荐
+     * Batch delete recommendations
      */
     int delete(List<Long> ids);
 
     /**
-     * 更新推荐状态
+     * Update recommendation status
      */
     int updateRecommendStatus(List<Long> ids, Integer recommendStatus);
 
     /**
-     * 分页查询推荐
+     * Paged query recommendations
      */
     List<SmsHomeNewProduct> list(String productName, Integer recommendStatus, Integer pageSize, Integer pageNum);
 }
